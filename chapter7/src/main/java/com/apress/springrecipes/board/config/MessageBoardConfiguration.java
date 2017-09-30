@@ -6,6 +6,7 @@ import org.apache.derby.jdbc.ClientDriver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 import com.apress.springrecipes.board.service.MessageBoardService;
 import com.apress.springrecipes.board.service.MessageBoardServiceImpl;
@@ -14,6 +15,7 @@ import com.apress.springrecipes.board.service.MessageBoardServiceImpl;
  * Created by marten on 06-06-14.
  */
 @Configuration
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class MessageBoardConfiguration {
 
     @Bean

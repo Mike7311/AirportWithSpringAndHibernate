@@ -3,7 +3,9 @@ package com.apress.springrecipes.board.web.config;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -22,11 +24,11 @@ public class MessageBoardSecurityConfiguration extends WebSecurityConfigurerAdap
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .authorizeRequests()
-                .antMatchers("/messageList*").hasAnyRole("USER", "GUEST")
-                .antMatchers("/messagePost*").hasRole("USER")
-                .antMatchers("/messageDelete*").hasRole("ADMIN")
-            .and()
+//            .authorizeRequests()
+//                .antMatchers("/messageList*").hasAnyRole("USER", "GUEST")
+//                .antMatchers("/messagePost*").hasRole("USER")
+//                .antMatchers("/messageDelete*").hasRole("ADMIN")
+//            .and()
                 .formLogin()
                     .loginPage("/login.jsp")
                     .usernameParameter("username")
@@ -56,5 +58,10 @@ public class MessageBoardSecurityConfiguration extends WebSecurityConfigurerAdap
 //                .withUser("user1").password("1111").authorities("ROLE_USER").and()
 //                .withUser("user2").password("2222").disabled(true).authorities("ROLE_USER");
     	auth.jdbcAuthentication().dataSource(dataSource);
+    }
+    
+    @Bean @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 }
