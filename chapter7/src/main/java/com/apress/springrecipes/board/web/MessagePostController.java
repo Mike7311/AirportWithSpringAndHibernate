@@ -22,7 +22,7 @@ public class MessagePostController {
 
 
     @Autowired
-    public MessagePostController(MessageBoardService messageBoardService) {
+    public void MessagePostController(MessageBoardService messageBoardService) {
         this.messageBoardService = messageBoardService;
     }
 

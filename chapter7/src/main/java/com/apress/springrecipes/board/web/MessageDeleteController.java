@@ -16,7 +16,7 @@ public class MessageDeleteController {
     private MessageBoardService messageBoardService;
 
     @Autowired
-    public MessageDeleteController(MessageBoardService messageBoardService) {
+    public void MessageDeleteController(MessageBoardService messageBoardService) {
         this.messageBoardService = messageBoardService;
     }
 
@@ -27,7 +27,6 @@ public class MessageDeleteController {
         messageBoardService.deleteMessage(message);
         model.addAttribute("messages", messageBoardService.listMessages());
 
-        
         return "redirect:messageList";
     }
 }
