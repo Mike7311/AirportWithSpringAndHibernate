@@ -1,0 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+	<link href="<c:url value="/static/js/jquery-ui-1.12.1.custom/jquery-ui.min.css"/>" rel="stylesheet"/>
+	<link href="<c:url value="/static/js/timepicker/timepicker.css"/>" rel="stylesheet" />
+	<c:url value="/static/js/jquery-ui-1.12.1.custom/jquery-ui.min.js" var="jqueryUi"/>
+	<c:url value="/static/js/timepicker/timepicker.js" var="datePicker"/>
+	<script src="${jqueryUi}"></script>
+	<script src="${datePicker}"></script>
