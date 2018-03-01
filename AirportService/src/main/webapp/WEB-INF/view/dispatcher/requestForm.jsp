@@ -11,10 +11,16 @@
 	<form:form method="POST" action="write" class="mTop" modelAttribute="request">
 		<c:set var="username"><security:authentication property="principal.username"/></c:set>
 		<form:hidden path="username" value="${username}"/>
-		<form:label path="header"><spring:message code="request.header"/></form:label>
-		<form:input path="header"/>
-		<form:label path="description"><spring:message code="request.description"/></form:label>
-		<form:input path="description" cols="40" rows="5"/>
+		<fieldset>
+			<form:label path="header"><spring:message code="request.header"/></form:label><br>
+			<form:input path="header"/>
+			<form:errors path="header" cssClass="error" />
+		</fieldset><br>
+		<fieldset>
+			<form:label path="description"><spring:message code="request.description"/></form:label><br>
+			<form:textarea path="description" cols="40" rows="5"/>
+			<form:errors path="description" cssClass="error" /><br>
+		</fieldset><br>
 		<button type = "submit"><spring:message code="write"/></button>
 	</form:form>
 </body>

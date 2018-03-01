@@ -3,6 +3,7 @@ package com.someairlines.config;
 import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.someairlines.db.EmployeeRepository;
 import com.someairlines.db.FlightRepository;
 import com.someairlines.db.RequestRepository;
+import com.someairlines.entity.binder.StringToLocalDateTimeConverter;
 import com.someairlines.web.CrewController;
 import com.someairlines.web.EmployeeController;
 import com.someairlines.web.FlightController;
@@ -35,6 +37,11 @@ public class TestWebConfig extends WebMvcConfigurerAdapter {
         viewResolver.setPrefix("/WEB-INF/view/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
+    }
+	
+	@Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(new StringToLocalDateTimeConverter());
     }
 	
 	@Override

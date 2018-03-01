@@ -14744,3 +14744,442 @@
 2018-02-21 15:40:01,152 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=2017-12-27T16:26, flightStatus=CANCELED]
 2018-02-21 15:40:01,186 DEBUG c.s.w.FlightController [main] got Id: 1
 2018-02-21 15:40:01,187 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2017-12-28T12:33, flightStatus=EN_ROUTE]
+2018-02-28 17:16:39,942 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-02-28 17:16:42,146 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-02-28 17:16:42,158 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-02-28 17:16:42,205 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-02-28 17:16:42,623 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-02-28 17:16:42,640 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-02-28 17:16:42,641 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-02-28 17:16:42,678 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-02-28 17:16:42,678 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-02-28 17:16:43,530 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-02-28 17:16:43,659 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-02-28 17:16:43,730 DEBUG c.s.w.CrewController [main] found pilots: [Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]]
+2018-02-28 17:16:43,737 DEBUG c.s.w.CrewController [main] found operators: [Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]]
+2018-02-28 17:16:43,738 DEBUG c.s.w.CrewController [main] found navigators: [Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]]
+2018-02-28 17:16:43,738 DEBUG c.s.w.CrewController [main] found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-02-28 17:16:43,807 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-02-28 17:16:43,841 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-02-28 17:16:43,857 DEBUG c.s.w.CrewController [main] Found pilot: Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]
+2018-02-28 17:16:43,858 DEBUG c.s.w.CrewController [main] Found navigator: Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]
+2018-02-28 17:16:43,858 DEBUG c.s.w.CrewController [main] Found operator: Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]
+2018-02-28 17:16:43,859 DEBUG c.s.w.CrewController [main] Found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-02-28 17:16:43,860 DEBUG c.s.w.CrewController [main] Created crew: FlightCrew [id=0, pilot=Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true], navigator=Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true], operator=Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true], flightAttendants=[Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]]
+2018-02-28 17:16:43,898 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-02-28 17:16:43,947 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-02-28 17:16:43,956 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2017-12-28T12:33, flightStatus=EN_ROUTE]
+2018-02-28 17:16:44,281 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-02-28 17:16:44,290 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2017-12-28T12:33, flightStatus=EN_ROUTE]
+2018-02-28 17:17:32,687 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-02-28 17:19:19,464 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:14:02,925 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:14:05,322 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 07:14:05,343 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:14:05,437 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 07:14:05,941 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:14:05,963 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 07:14:05,963 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 07:14:05,998 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 07:14:05,998 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:14:06,731 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 07:14:06,821 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 07:14:06,884 DEBUG c.s.w.CrewController [main] found pilots: [Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]]
+2018-03-01 07:14:06,891 DEBUG c.s.w.CrewController [main] found operators: [Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]]
+2018-03-01 07:14:06,894 DEBUG c.s.w.CrewController [main] found navigators: [Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]]
+2018-03-01 07:14:06,895 DEBUG c.s.w.CrewController [main] found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 07:14:06,928 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 07:14:06,970 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 07:14:06,971 DEBUG c.s.w.CrewController [main] Found pilot: Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]
+2018-03-01 07:14:06,972 DEBUG c.s.w.CrewController [main] Found navigator: Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]
+2018-03-01 07:14:06,972 DEBUG c.s.w.CrewController [main] Found operator: Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]
+2018-03-01 07:14:06,973 DEBUG c.s.w.CrewController [main] Found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 07:14:06,973 DEBUG c.s.w.CrewController [main] Created crew: FlightCrew [id=0, pilot=Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true], navigator=Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true], operator=Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true], flightAttendants=[Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]]
+2018-03-01 07:14:06,989 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-01 07:14:07,018 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 07:14:07,019 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2017-12-28T12:33, flightStatus=EN_ROUTE]
+2018-03-01 07:14:07,256 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 07:14:07,257 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2017-12-28T12:33, flightStatus=EN_ROUTE]
+2018-03-01 07:14:46,105 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:15:11,378 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:21:29,222 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:23:38,242 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:25:07,246 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:26:07,864 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:27:13,095 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:29:11,878 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:29:13,973 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 07:29:14,003 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:29:14,086 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 07:29:14,444 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:29:14,465 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 07:29:14,466 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 07:29:14,554 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 07:29:14,554 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:29:15,532 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 07:29:15,630 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 07:29:15,671 DEBUG c.s.w.CrewController [main] found pilots: [Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]]
+2018-03-01 07:29:15,672 DEBUG c.s.w.CrewController [main] found operators: [Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]]
+2018-03-01 07:29:15,672 DEBUG c.s.w.CrewController [main] found navigators: [Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]]
+2018-03-01 07:29:15,673 DEBUG c.s.w.CrewController [main] found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 07:29:15,714 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 07:29:15,751 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 07:29:15,752 DEBUG c.s.w.CrewController [main] Found pilot: Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]
+2018-03-01 07:29:15,754 DEBUG c.s.w.CrewController [main] Found navigator: Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]
+2018-03-01 07:29:15,757 DEBUG c.s.w.CrewController [main] Found operator: Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]
+2018-03-01 07:29:15,758 DEBUG c.s.w.CrewController [main] Found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 07:29:15,758 DEBUG c.s.w.CrewController [main] Created crew: FlightCrew [id=0, pilot=Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true], navigator=Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true], operator=Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true], flightAttendants=[Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]]
+2018-03-01 07:29:15,816 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-01 07:29:15,870 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 07:29:15,871 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2017-12-28T12:33, flightStatus=EN_ROUTE]
+2018-03-01 07:29:16,123 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 07:29:16,123 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2017-12-28T12:33, flightStatus=EN_ROUTE]
+2018-03-01 07:33:36,532 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:33:39,557 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 07:33:39,583 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:33:39,643 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 07:33:40,371 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:33:40,399 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 07:33:40,400 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 07:33:40,486 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 07:33:40,489 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:33:41,728 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 07:33:41,829 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 07:33:41,893 DEBUG c.s.w.CrewController [main] found pilots: [Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]]
+2018-03-01 07:33:41,894 DEBUG c.s.w.CrewController [main] found operators: [Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]]
+2018-03-01 07:33:41,895 DEBUG c.s.w.CrewController [main] found navigators: [Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]]
+2018-03-01 07:33:41,896 DEBUG c.s.w.CrewController [main] found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 07:33:41,930 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 07:33:41,982 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 07:33:41,983 DEBUG c.s.w.CrewController [main] Found pilot: Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]
+2018-03-01 07:33:41,983 DEBUG c.s.w.CrewController [main] Found navigator: Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]
+2018-03-01 07:33:41,983 DEBUG c.s.w.CrewController [main] Found operator: Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]
+2018-03-01 07:33:41,984 DEBUG c.s.w.CrewController [main] Found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 07:33:41,984 DEBUG c.s.w.CrewController [main] Created crew: FlightCrew [id=0, pilot=Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true], navigator=Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true], operator=Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true], flightAttendants=[Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]]
+2018-03-01 07:33:42,009 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-01 07:33:42,054 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 07:33:42,055 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2017-12-28T12:33, flightStatus=EN_ROUTE]
+2018-03-01 07:33:42,142 DEBUG c.s.w.FlightController [main] Flight to add: Flight [id=0, origin=moon, destination=sun, departureDate=2018-03-08T16:26, flightStatus=SCHEDULED]
+2018-03-01 07:33:42,160 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 07:33:42,161 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 07:33:42,171 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 07:33:42,172 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2017-12-28T12:33, flightStatus=EN_ROUTE]
+2018-03-01 07:34:28,007 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:34:29,806 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 07:34:29,811 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:34:29,858 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 07:34:30,288 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:34:30,306 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 07:34:30,307 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 07:34:30,350 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 07:34:30,351 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:34:31,049 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 07:34:31,101 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 07:34:31,136 DEBUG c.s.w.CrewController [main] found pilots: [Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]]
+2018-03-01 07:34:31,137 DEBUG c.s.w.CrewController [main] found operators: [Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]]
+2018-03-01 07:34:31,137 DEBUG c.s.w.CrewController [main] found navigators: [Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]]
+2018-03-01 07:34:31,138 DEBUG c.s.w.CrewController [main] found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 07:34:31,161 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 07:34:31,182 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 07:34:31,183 DEBUG c.s.w.CrewController [main] Found pilot: Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]
+2018-03-01 07:34:31,183 DEBUG c.s.w.CrewController [main] Found navigator: Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]
+2018-03-01 07:34:31,183 DEBUG c.s.w.CrewController [main] Found operator: Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]
+2018-03-01 07:34:31,184 DEBUG c.s.w.CrewController [main] Found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 07:34:31,184 DEBUG c.s.w.CrewController [main] Created crew: FlightCrew [id=0, pilot=Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true], navigator=Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true], operator=Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true], flightAttendants=[Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]]
+2018-03-01 07:34:31,199 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-01 07:34:31,225 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 07:34:31,226 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2017-12-28T12:33, flightStatus=EN_ROUTE]
+2018-03-01 07:34:31,331 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 07:34:31,331 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 07:34:31,356 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 07:34:31,359 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2017-12-28T12:33, flightStatus=EN_ROUTE]
+2018-03-01 07:34:49,933 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:34:52,962 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 07:34:52,968 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:34:53,018 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 07:34:53,375 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:34:53,394 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 07:34:53,395 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 07:34:53,444 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 07:34:53,446 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 07:34:54,267 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 07:34:54,321 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 07:34:54,366 DEBUG c.s.w.CrewController [main] found pilots: [Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]]
+2018-03-01 07:34:54,371 DEBUG c.s.w.CrewController [main] found operators: [Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]]
+2018-03-01 07:34:54,372 DEBUG c.s.w.CrewController [main] found navigators: [Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]]
+2018-03-01 07:34:54,373 DEBUG c.s.w.CrewController [main] found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 07:34:54,429 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 07:34:54,459 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 07:34:54,461 DEBUG c.s.w.CrewController [main] Found pilot: Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]
+2018-03-01 07:34:54,466 DEBUG c.s.w.CrewController [main] Found navigator: Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]
+2018-03-01 07:34:54,468 DEBUG c.s.w.CrewController [main] Found operator: Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]
+2018-03-01 07:34:54,471 DEBUG c.s.w.CrewController [main] Found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 07:34:54,472 DEBUG c.s.w.CrewController [main] Created crew: FlightCrew [id=0, pilot=Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true], navigator=Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true], operator=Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true], flightAttendants=[Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]]
+2018-03-01 07:34:54,493 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-01 07:34:54,529 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 07:34:54,530 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2017-12-28T12:33, flightStatus=EN_ROUTE]
+2018-03-01 07:34:54,665 DEBUG c.s.w.FlightController [main] Flight to add: Flight [id=0, origin=moon, destination=sun, departureDate=2018-03-08T16:26, flightStatus=SCHEDULED]
+2018-03-01 07:34:54,689 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 07:34:54,690 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 07:34:54,704 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 07:34:54,705 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2017-12-28T12:33, flightStatus=EN_ROUTE]
+2018-03-01 07:50:19,592 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:50:22,241 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 07:50:22,543 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 07:50:47,598 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:50:49,736 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 07:50:50,143 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 07:57:16,058 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:57:18,491 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 07:57:18,508 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 07:57:37,636 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 07:57:41,378 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 07:57:41,407 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 08:10:24,710 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 08:10:26,849 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-01 08:10:27,062 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 08:10:27,068 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T08:10:27.011, flightStatus=EN_ROUTE]
+2018-03-01 08:10:27,586 DEBUG c.s.w.FlightController [main] Flight to add: Flight [id=0, origin=moon, destination=sun, departureDate=2018-03-02T08:10, flightStatus=SCHEDULED]
+2018-03-01 08:10:27,606 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 08:10:27,606 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 08:10:27,621 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 08:10:27,622 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 08:10:27,641 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 08:10:27,642 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T08:10:27.630, flightStatus=EN_ROUTE]
+2018-03-01 08:10:48,517 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 08:10:50,838 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-01 08:10:50,882 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 08:10:50,885 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T08:10:50.860, flightStatus=EN_ROUTE]
+2018-03-01 08:10:50,907 DEBUG c.s.w.FlightController [main] Flight to add: Flight [id=0, origin=moon, destination=sun, departureDate=2018-03-02T08:10, flightStatus=SCHEDULED]
+2018-03-01 08:10:50,922 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 08:10:50,923 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 08:10:50,936 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 08:10:50,936 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T08:10:50.925, flightStatus=EN_ROUTE]
+2018-03-01 08:11:05,351 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 08:11:08,636 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-01 08:11:08,824 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 08:11:08,834 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T08:11:08.757, flightStatus=EN_ROUTE]
+2018-03-01 08:11:09,343 DEBUG c.s.w.FlightController [main] Flight to add: Flight [id=0, origin=moon, destination=sun, departureDate=2018-03-02T08:11, flightStatus=SCHEDULED]
+2018-03-01 08:11:09,371 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 08:11:09,372 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 08:11:09,451 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 08:11:09,452 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T08:11:09.437, flightStatus=EN_ROUTE]
+2018-03-01 08:11:45,412 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 08:11:48,861 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 08:11:48,871 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:11:48,993 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 08:11:49,498 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:11:49,519 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 08:11:49,520 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 08:11:49,598 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 08:11:49,599 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:17:24,600 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 08:17:28,395 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 08:17:28,403 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:17:28,424 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 08:17:28,447 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:17:28,471 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 08:17:28,472 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 08:17:28,528 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 08:17:28,529 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:17:47,505 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 08:17:51,210 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 08:17:51,216 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:17:51,231 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 08:17:51,248 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:17:51,265 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 08:17:51,265 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 08:17:51,324 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 08:17:51,325 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:17:52,312 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 08:17:52,331 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 08:17:52,383 DEBUG c.s.w.CrewController [main] found pilots: [Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]]
+2018-03-01 08:17:52,385 DEBUG c.s.w.CrewController [main] found operators: [Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]]
+2018-03-01 08:17:52,385 DEBUG c.s.w.CrewController [main] found navigators: [Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]]
+2018-03-01 08:17:52,386 DEBUG c.s.w.CrewController [main] found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 08:17:52,420 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 08:17:52,443 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 08:17:52,444 DEBUG c.s.w.CrewController [main] Found pilot: Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]
+2018-03-01 08:17:52,445 DEBUG c.s.w.CrewController [main] Found navigator: Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]
+2018-03-01 08:17:52,446 DEBUG c.s.w.CrewController [main] Found operator: Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]
+2018-03-01 08:17:52,447 DEBUG c.s.w.CrewController [main] Found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 08:17:52,448 DEBUG c.s.w.CrewController [main] Created crew: FlightCrew [id=0, pilot=Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true], navigator=Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true], operator=Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true], flightAttendants=[Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]]
+2018-03-01 08:17:52,486 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-01 08:17:52,550 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 08:17:52,557 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T08:17:52.524, flightStatus=EN_ROUTE]
+2018-03-01 08:17:52,633 DEBUG c.s.w.FlightController [main] Flight to add: Flight [id=0, origin=moon, destination=sun, departureDate=2018-03-02T08:17, flightStatus=SCHEDULED]
+2018-03-01 08:17:52,668 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 08:17:52,669 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 08:17:52,700 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 08:17:52,701 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T08:17:52.688, flightStatus=EN_ROUTE]
+2018-03-01 08:19:22,592 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 08:19:25,649 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 08:19:25,653 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:19:25,672 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 08:19:25,692 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:19:25,713 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 08:19:25,714 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 08:19:25,771 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 08:19:25,771 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:19:26,728 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 08:19:26,750 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 08:19:26,802 DEBUG c.s.w.CrewController [main] found pilots: [Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]]
+2018-03-01 08:19:26,803 DEBUG c.s.w.CrewController [main] found operators: [Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]]
+2018-03-01 08:19:26,804 DEBUG c.s.w.CrewController [main] found navigators: [Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]]
+2018-03-01 08:19:26,805 DEBUG c.s.w.CrewController [main] found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 08:19:26,846 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 08:19:26,900 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 08:19:26,901 DEBUG c.s.w.CrewController [main] Found pilot: Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]
+2018-03-01 08:19:26,902 DEBUG c.s.w.CrewController [main] Found navigator: Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]
+2018-03-01 08:19:26,903 DEBUG c.s.w.CrewController [main] Found operator: Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]
+2018-03-01 08:19:26,904 DEBUG c.s.w.CrewController [main] Found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 08:19:26,904 DEBUG c.s.w.CrewController [main] Created crew: FlightCrew [id=0, pilot=Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true], navigator=Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true], operator=Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true], flightAttendants=[Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]]
+2018-03-01 08:19:26,943 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-01 08:19:26,980 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 08:19:26,982 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T08:19:26.966, flightStatus=EN_ROUTE]
+2018-03-01 08:19:27,076 DEBUG c.s.w.FlightController [main] Flight to add: Flight [id=0, origin=moon, destination=sun, departureDate=2018-03-02T08:19, flightStatus=SCHEDULED]
+2018-03-01 08:19:27,102 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 08:19:27,103 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 08:19:27,139 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 08:19:27,140 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T08:19:27.122, flightStatus=EN_ROUTE]
+2018-03-01 08:19:54,317 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 08:19:57,604 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 08:19:57,611 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:19:57,632 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 08:19:57,652 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:19:57,673 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 08:19:57,674 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 08:19:57,740 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 08:19:57,741 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:19:58,634 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 08:19:58,652 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 08:19:58,691 DEBUG c.s.w.CrewController [main] found pilots: [Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]]
+2018-03-01 08:19:58,692 DEBUG c.s.w.CrewController [main] found operators: [Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]]
+2018-03-01 08:19:58,693 DEBUG c.s.w.CrewController [main] found navigators: [Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]]
+2018-03-01 08:19:58,693 DEBUG c.s.w.CrewController [main] found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 08:19:58,723 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 08:19:58,751 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 08:19:58,752 DEBUG c.s.w.CrewController [main] Found pilot: Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]
+2018-03-01 08:19:58,752 DEBUG c.s.w.CrewController [main] Found navigator: Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]
+2018-03-01 08:19:58,753 DEBUG c.s.w.CrewController [main] Found operator: Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]
+2018-03-01 08:19:58,754 DEBUG c.s.w.CrewController [main] Found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 08:19:58,754 DEBUG c.s.w.CrewController [main] Created crew: FlightCrew [id=0, pilot=Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true], navigator=Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true], operator=Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true], flightAttendants=[Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]]
+2018-03-01 08:19:58,801 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-01 08:19:58,848 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 08:19:58,849 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T08:19:58.837, flightStatus=EN_ROUTE]
+2018-03-01 08:19:58,922 DEBUG c.s.w.FlightController [main] Flight to add: Flight [id=0, origin=moon, destination=sun, departureDate=2018-03-02T08:19, flightStatus=SCHEDULED]
+2018-03-01 08:19:58,944 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 08:19:58,945 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 08:19:58,971 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 08:19:58,972 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T08:19:58.962, flightStatus=EN_ROUTE]
+2018-03-01 08:21:23,671 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 08:21:26,087 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 08:21:26,092 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:21:26,107 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 08:21:26,126 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:21:26,143 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 08:21:26,144 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 08:21:26,194 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 08:21:26,194 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:27:49,067 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 08:27:52,033 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 08:27:52,036 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:27:52,053 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 08:27:52,073 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:27:52,089 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 08:27:52,090 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 08:27:52,136 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 08:27:52,137 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 08:29:03,565 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 08:29:05,800 DEBUG c.s.w.CrewController [main] found pilots: [Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]]
+2018-03-01 08:29:05,802 DEBUG c.s.w.CrewController [main] found operators: [Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]]
+2018-03-01 08:29:05,802 DEBUG c.s.w.CrewController [main] found navigators: [Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]]
+2018-03-01 08:29:05,803 DEBUG c.s.w.CrewController [main] found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 08:29:05,863 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 08:29:05,892 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 08:29:05,893 DEBUG c.s.w.CrewController [main] Found pilot: Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]
+2018-03-01 08:29:05,894 DEBUG c.s.w.CrewController [main] Found navigator: Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]
+2018-03-01 08:29:05,895 DEBUG c.s.w.CrewController [main] Found operator: Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]
+2018-03-01 08:29:05,897 DEBUG c.s.w.CrewController [main] Found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 08:29:05,898 DEBUG c.s.w.CrewController [main] Created crew: FlightCrew [id=0, pilot=Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true], navigator=Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true], operator=Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true], flightAttendants=[Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]]
+2018-03-01 09:13:33,930 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 09:13:37,024 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 09:13:37,028 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 09:13:37,044 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 09:13:37,068 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 09:13:37,100 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 09:13:37,101 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 09:13:37,162 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 09:13:37,163 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 09:15:58,423 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 09:16:00,274 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-01 09:16:00,425 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 09:16:00,432 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T09:16:00.374, flightStatus=EN_ROUTE]
+2018-03-01 09:16:00,829 DEBUG c.s.w.FlightController [main] Flight to add: Flight [id=0, origin=moon, destination=sun, departureDate=2018-03-02T09:16, flightStatus=SCHEDULED]
+2018-03-01 09:16:00,848 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 09:16:00,848 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 09:16:00,903 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 09:16:00,904 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T09:16:00.892, flightStatus=EN_ROUTE]
+2018-03-01 09:23:58,432 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 09:24:00,914 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 09:24:00,934 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 09:26:41,727 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 09:26:45,547 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 09:26:45,551 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 09:26:45,564 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 09:26:45,582 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 09:26:45,595 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 09:26:45,596 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 09:26:45,643 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 09:26:45,644 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 09:26:46,594 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 09:26:46,627 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 09:26:46,714 DEBUG c.s.w.CrewController [main] found pilots: [Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]]
+2018-03-01 09:26:46,715 DEBUG c.s.w.CrewController [main] found operators: [Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]]
+2018-03-01 09:26:46,716 DEBUG c.s.w.CrewController [main] found navigators: [Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]]
+2018-03-01 09:26:46,717 DEBUG c.s.w.CrewController [main] found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 09:26:46,748 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 09:26:46,786 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 09:26:46,787 DEBUG c.s.w.CrewController [main] Found pilot: Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]
+2018-03-01 09:26:46,788 DEBUG c.s.w.CrewController [main] Found navigator: Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]
+2018-03-01 09:26:46,788 DEBUG c.s.w.CrewController [main] Found operator: Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]
+2018-03-01 09:26:46,789 DEBUG c.s.w.CrewController [main] Found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 09:26:46,789 DEBUG c.s.w.CrewController [main] Created crew: FlightCrew [id=0, pilot=Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true], navigator=Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true], operator=Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true], flightAttendants=[Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]]
+2018-03-01 09:26:46,830 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-01 09:26:46,861 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 09:26:46,862 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T09:26:46.849, flightStatus=EN_ROUTE]
+2018-03-01 09:26:46,954 DEBUG c.s.w.FlightController [main] Flight to add: Flight [id=0, origin=moon, destination=sun, departureDate=2018-03-02T09:26, flightStatus=SCHEDULED]
+2018-03-01 09:26:46,975 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 09:26:46,976 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 09:26:47,003 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 09:26:47,004 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T09:26:46.993, flightStatus=EN_ROUTE]
+2018-03-01 09:30:39,022 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-01 09:30:42,613 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 09:30:42,620 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 09:30:42,640 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-01 09:30:42,661 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 09:30:42,679 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 09:30:42,680 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-01 09:30:42,730 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-01 09:30:42,731 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-01 09:30:43,634 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-01 09:30:43,656 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-01 09:30:43,701 DEBUG c.s.w.CrewController [main] found pilots: [Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]]
+2018-03-01 09:30:43,703 DEBUG c.s.w.CrewController [main] found operators: [Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]]
+2018-03-01 09:30:43,704 DEBUG c.s.w.CrewController [main] found navigators: [Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]]
+2018-03-01 09:30:43,705 DEBUG c.s.w.CrewController [main] found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 09:30:43,742 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 09:30:43,771 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-01 09:30:43,772 DEBUG c.s.w.CrewController [main] Found pilot: Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]
+2018-03-01 09:30:43,773 DEBUG c.s.w.CrewController [main] Found navigator: Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]
+2018-03-01 09:30:43,774 DEBUG c.s.w.CrewController [main] Found operator: Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]
+2018-03-01 09:30:43,776 DEBUG c.s.w.CrewController [main] Found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-01 09:30:43,777 DEBUG c.s.w.CrewController [main] Created crew: FlightCrew [id=0, pilot=Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true], navigator=Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true], operator=Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true], flightAttendants=[Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]]
+2018-03-01 09:30:43,815 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-01 09:30:43,846 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 09:30:43,848 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T09:30:43.832, flightStatus=EN_ROUTE]
+2018-03-01 09:30:43,927 DEBUG c.s.w.FlightController [main] Flight to add: Flight [id=0, origin=moon, destination=sun, departureDate=2018-03-02T09:30, flightStatus=SCHEDULED]
+2018-03-01 09:30:43,950 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 09:30:43,951 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-01 09:30:43,983 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-01 09:30:43,985 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T09:30:43.969, flightStatus=EN_ROUTE]

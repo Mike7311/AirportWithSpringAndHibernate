@@ -17,7 +17,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -35,14 +34,9 @@ import com.someairlines.entity.util.Job;
 @WebAppConfiguration
 public class EmployeeControllerTest {
 
-	private final String REDIRECT = "redirect:/employee";
-	
 	MockMvc mockMvc;
 	@Autowired
 	EmployeeRepository mockEmployeeRepository;
-	
-	@Autowired
-	EmployeeController employeeController;
 	
 	@Autowired
 	private WebApplicationContext context;
@@ -66,7 +60,7 @@ public class EmployeeControllerTest {
 		List<Job> jobs = Arrays.asList(Job.values());
 		mockMvc.perform(post("/employee").param("addEmployeePage", ""))
 			.andExpect(status().isOk())
-			.andExpect(view().name("admin/addEmployee"))
+			.andExpect(view().name(EmployeeController.ADD))
 			.andExpect(model().attribute("employee", samePropertyValuesAs(new Employee())))
 			.andExpect(model().attribute("jobs", is(jobs)));
 	}
@@ -74,13 +68,23 @@ public class EmployeeControllerTest {
 	@Test
 	public void testAddEmployee() throws Exception {
 		mockMvc.perform(post("/employee/add")
-			.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 			.param("firstName", "Petr")
 			.param("lastName", "Perviy")
 			.param("email", "Petya1672@mail.ru")
 			.param("job", "NAVIGATOR"))
 			.andExpect(status().is3xxRedirection())
-			.andExpect(view().name(REDIRECT));
+			.andExpect(view().name(EmployeeController.REDIRECT));
+	}
+	
+	@Test
+	public void testAddEmployeeNonValid() throws Exception {
+		mockMvc.perform(post("/employee/add")
+			.param("firstName", "Petr")
+			.param("lastName", "")
+			.param("email", "Petya1672@mail.ru")
+			.param("job", "NAVIGATOR"))
+			.andExpect(status().is2xxSuccessful())
+			.andExpect(view().name(EmployeeController.ADD));
 	}
 	
 	@Test
@@ -90,7 +94,7 @@ public class EmployeeControllerTest {
 		mockMvc.perform(post("/employee")
 		.param("removeEmployeeId", "1"))
 		.andExpect(status().is3xxRedirection())
-		.andExpect(view().name(REDIRECT));
+		.andExpect(view().name(EmployeeController.REDIRECT));
 	}
 	
 	@Test
@@ -109,14 +113,25 @@ public class EmployeeControllerTest {
 	@Test
 	public void testChangeEmployee() throws Exception {
 		mockMvc.perform(post("/employee/change")
-		.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 		.param("id", "1")
 		.param("firstName", "Petr")
 		.param("lastName", "Perviy")
 		.param("email", "Petya1672@mail.ru")
 		.param("job", Job.OPERATOR.toString()))
 		.andExpect(status().is3xxRedirection())
-		.andExpect(view().name(REDIRECT));
+		.andExpect(view().name(EmployeeController.REDIRECT));
+	}
+	
+	@Test
+	public void testChangeEmployeeNonValid() throws Exception {
+		mockMvc.perform(post("/employee/change")
+		.param("id", "1")
+		.param("firstName", "Petr")
+		.param("lastName", "")
+		.param("email", "Petya1672@mail.ru")
+		.param("job", Job.OPERATOR.toString()))
+		.andExpect(status().is2xxSuccessful())
+		.andExpect(view().name(EmployeeController.CONFIGURE));
 	}
 	
 	public Employee createEmployee() {

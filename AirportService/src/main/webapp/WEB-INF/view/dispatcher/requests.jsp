@@ -11,7 +11,7 @@
 <%@ include file="/WEB-INF/jspf/header.jspf" %>
 </head>
 <body>
-	<table>
+	<table id="contentTable">
 		<tr>
 			<th>Id</th>
 			<th><spring:message code="request.header"/></th>

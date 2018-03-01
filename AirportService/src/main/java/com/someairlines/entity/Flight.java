@@ -15,7 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.someairlines.entity.util.FlightStatus;
 
@@ -28,10 +29,12 @@ public class Flight {
 	@Column(updatable = false, nullable = false)
 	private long id;
 	
-	@NotNull
+	@NotEmpty
+	@Size(max = 20)
 	private String origin;
 	
-	@NotNull
+	@NotEmpty
+	@Size(max = 20)
 	private String destination;
 	
 	@Column(name = "departure_date")

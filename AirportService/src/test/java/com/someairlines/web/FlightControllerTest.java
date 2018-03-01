@@ -10,6 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +18,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -35,18 +35,17 @@ import com.someairlines.entity.util.FlightStatus;
 @WebAppConfiguration
 public class FlightControllerTest {
 	
-	private final String REDIRECT = "redirect:/flight";
-	
 	MockMvc mockMvc;
 	@Autowired
 	FlightRepository mockFlightRepository;
 	
 	@Autowired
-	FlightController flightController;
-	
-	@Autowired
 	private WebApplicationContext context;
 
+	private LocalDateTime dateTime = LocalDateTime.now().plusDays(1);
+	
+	private String dateTimeString = formatLocalDateTime(dateTime);
+	
 	@Before
 	public void init() {
 		reset(mockFlightRepository);
@@ -66,7 +65,7 @@ public class FlightControllerTest {
 		List<FlightStatus> flightStatuses = Arrays.asList(FlightStatus.values());
 		mockMvc.perform(post("/flight").param("addFlightPage", ""))
 			.andExpect(status().isOk())
-			.andExpect(view().name("admin/addFlight"))
+			.andExpect(view().name(FlightController.ADD))
 			.andExpect(model().attribute("flight", instanceOf(Flight.class)))
 			.andExpect(model().attribute("flightStatuses", is(flightStatuses)));
 	}
@@ -74,12 +73,21 @@ public class FlightControllerTest {
 	@Test
 	public void testAddFlight() throws Exception {
 		mockMvc.perform(post("/flight/add")
-			.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 			.param("origin", "moon")
 			.param("destination", "sun")
-			.param("dateAndTime", "2017-12-27 16:26"))
+			.param("departureDate", dateTimeString))
 			.andExpect(status().is3xxRedirection())
-			.andExpect(view().name(REDIRECT));
+			.andExpect(view().name(FlightController.REDIRECT));
+	}
+	
+	@Test
+	public void testAddFlightNonValid() throws Exception {
+		mockMvc.perform(post("/flight/add")
+			.param("origin", "moon")
+			.param("destination", "")
+			.param("departureDate", dateTimeString))
+			.andExpect(status().is2xxSuccessful())
+			.andExpect(view().name(FlightController.ADD));
 	}
 	
 	@Test
@@ -90,7 +98,7 @@ public class FlightControllerTest {
 		.param("remove", "")
 		.param("flightId", "1"))
 		.andExpect(status().is3xxRedirection())
-		.andExpect(view().name(REDIRECT));
+		.andExpect(view().name(FlightController.REDIRECT));
 	}
 	
 	@Test
@@ -102,7 +110,7 @@ public class FlightControllerTest {
 				.param("changeFlightPage", "")
 				.param("flightId", "1"))
 			.andExpect(status().isOk())
-			.andExpect(view().name("admin/configureFlight"))
+			.andExpect(view().name(FlightController.CONFIGURE))
 			.andExpect(model().attribute("flight", is(flightToChange)))
 			.andExpect(model().attribute("flightStatuses", is(flightStatuses)));
 	}
@@ -110,23 +118,39 @@ public class FlightControllerTest {
 	@Test
 	public void testChangeFlight() throws Exception {
 		mockMvc.perform(post("/flight/change")
-		.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 		.param("origin", "moon")
 		.param("destination", "sun")
-		.param("dateAndTime", "2017-12-27 16:26")
+		.param("dateAndTime", dateTimeString)
 		.param("flightStatus", FlightStatus.CANCELED.toString()))
 		.andExpect(status().is3xxRedirection())
-		.andExpect(view().name(REDIRECT));
+		.andExpect(view().name(FlightController.REDIRECT));
 	}
+	
+	@Test
+	public void testChangeFlightNonValid() throws Exception {
+		mockMvc.perform(post("/flight/change")
+				.param("origin", "moon")
+				.param("destination", "")
+				.param("dateAndTime", dateTimeString)
+				.param("flightStatus", FlightStatus.CANCELED.toString()))
+				.andExpect(status().is2xxSuccessful())
+				.andExpect(view().name(FlightController.CONFIGURE));
+	}
+	
+	//Util
 	
 	public Flight createFlight() {
 		Flight flight = new Flight();
 		flight.setId(1);
 		flight.setOrigin("Mars");
 		flight.setDestination("Uranus");
-		flight.setDepartureDate(LocalDateTime.of(2017, 12, 28, 12, 33));
+		flight.setDepartureDate(dateTime);
 		flight.setFlightStatus(FlightStatus.EN_ROUTE);
 		return flight;
 	}
 	
+	private String formatLocalDateTime(LocalDateTime dateTime) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		return dateTime.format(formatter);
+	}
 }

@@ -16,15 +16,18 @@
 	<tr>
 		<td><spring:message code="employee.firstName"/></td>
 		<td><form:input path="firstName"/></td>
+		<td><form:errors path="firstName"/></td>
 	</tr>
 	<tr>
 	<tr>
 		<td><spring:message code="employee.lastName"/></td>
 		<td><form:input path="lastName"/></td>
+		<td><form:errors path="lastName"/></td>
 	</tr>
 	<tr>
 		<td>Email</td>
 		<td><form:input path="email"/></td>
+		<td><form:errors path="email"/></td>
 	</tr>
 	<tr>
 		<td><spring:message code="employee.job"/></td>

@@ -13,10 +13,17 @@ $(document).ready(function() {
 		var flightId = $(this).find('input:radio').val();
 		$('button[name="flightId"]').val(flightId);
 	});
+	$('button:not(button[name="addFlightPage"])').click(function(e){
+		if(!$('button[name="flightId"]').val()){
+			e.preventDefault();
+			alert('select flight');
+			return;
+		}
+	});
 	$("#contentTable").tablesorter();
 	clickableRows();
 	}
-); 
+);
 </script>
 </head>
 <body>

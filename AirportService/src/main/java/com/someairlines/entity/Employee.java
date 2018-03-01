@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,18 +25,20 @@ public class Employee {
 	private long id;
 	
 	@Column(name = "first_name", nullable = false, length = 20)
-	@Size(min = 4, max = 20)
+	@NotEmpty
+	@Size(max = 20)
 	private String firstName;
 	
 	@Column(name = "last_name", nullable = false, length = 20)
-	@Size(min = 4, max = 20)
+	@NotEmpty
+	@Size(max = 20)
 	private String lastName;
 	
 	@Enumerated(EnumType.STRING)
 	private Job job;
 	
-	@NotNull
 	@Email(message = "Invalid email")
+	@NotEmpty
 	private String email;
 	
 	@NotNull

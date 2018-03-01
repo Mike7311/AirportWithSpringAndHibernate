@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,10 @@ import com.someairlines.entity.Employee;
 import com.someairlines.entity.Flight;
 import com.someairlines.entity.FlightCrew;
 
+/**
+ * @author Kotkov Mikhail
+ *
+ */
 @Controller
 @RequestMapping("/crew*")
 public class CrewController {
@@ -36,6 +41,7 @@ public class CrewController {
 	}
 	
 	@GetMapping
+	@PreAuthorize("hasRole('ROLE_USER')")
 	public String crew(Model model,
 			@RequestParam long flightId) {
 		List<Employee> pilots = employeeRepository.findPilots();
@@ -55,6 +61,7 @@ public class CrewController {
 	}
 	
 	@PostMapping("/create")
+	@PreAuthorize("hasRole('ROLE_USER')")
 	public String createCrew(@RequestParam long flightId,
 			@RequestParam long pilotId,
 			@RequestParam long navigatorId,
@@ -78,16 +85,17 @@ public class CrewController {
 		flight.setFlightCrew(crew);
 		logger.debug("Created crew: " + crew);
 		flightRepository.update(flight);
-		return "redirect:/flights";
+		return FlightController.REDIRECT;
 	}
 	
 	@PostMapping("/free")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String freeCrew(@RequestParam long flightId) {
 		Flight flight = flightRepository.find(flightId);
 		logger.debug("Found flight: " + flight);
 		flight.setFlightCrew(null);
 		flightRepository.freeCrew(flight);
 		flightRepository.update(flight);
-		return "redirect:/flights";
+		return FlightController.REDIRECT;
 	}
 }

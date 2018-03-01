@@ -9,11 +9,14 @@
 <body>
 <%@ include file="/WEB-INF/jspf/header.jspf" %>
 	<form:form action="update" modelAttribute="request">
-	<input type="hidden" name="requestId" value="${request.id}"/>
-	<form:label path="header"><spring:message code="request.header"/></form:label>
-	<form:input path="header" value="${request.header}" readonly="true"/>
-	<form:label path="description"><spring:message code="request.description"/></form:label>
-	<form:input rows="4" cols="40" path="description" value="${request.description}" readonly="true"/>
+	<fieldset id="requestFields">
+		<input type="hidden" name="requestId" value="${request.id}"/>
+		<form:label path="header"><spring:message code="request.header"/></form:label><br>
+		<form:input path="header" value="${request.header}" readonly="true"/><br>
+		<form:label path="description"><spring:message code="request.description"/></form:label><br>
+		<form:textarea rows="4" cols="40" path="description" value="${request.description}" readonly="true"/><br>
+	</fieldset>
+	<br>
 	<button name="status" value="APPROVED"><spring:message code="request.approve"/></button>
 	<button name="status" value="DECLINED"><spring:message code="request.decline"/></button>	
 	</form:form>

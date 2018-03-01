@@ -106,7 +106,7 @@ public class RequestControllerTest {
 	public void testWriteRequestForm() throws Exception {
 		mockMvc.perform(get("/request/write"))
 		.andExpect(status().isOk())
-		.andExpect(view().name("dispatcher/requestForm"))
+		.andExpect(view().name(RequestController.DISPATCHERFORM))
 		.andExpect(model().attribute("request", instanceOf(Request.class)));
 	}
 	
@@ -118,7 +118,29 @@ public class RequestControllerTest {
 				.param("header", TESTHEADER)
 				.param("description", TESTDESCRIPTION))
 		.andExpect(status().is3xxRedirection())
-		.andExpect(view().name("redirect:/request"));
+		.andExpect(view().name(RequestController.REDIRECT));
+	}
+	
+	@Test
+	@WithMockUser(username = TESTUSER, roles={ "USER" })
+	public void testWriteRequestNonValid() throws Exception {
+		mockMvc.perform(post("/request/write")
+				.param("username", TESTUSER)
+				.param("header", "")
+				.param("description", TESTDESCRIPTION))
+		.andExpect(status().is2xxSuccessful())
+		.andExpect(view().name(RequestController.DISPATCHERFORM));
+	}
+	
+	@Test
+	public void testProcessRequest () throws Exception {
+		Request testRequest = getNewTestRequest();
+		when(mockRequestRepository.find(1)).thenReturn(testRequest);
+		mockMvc.perform(post("/request/update")
+				.param("requestId", "1")
+				.param("status", "APPROVED"))
+		.andExpect(status().is3xxRedirection())
+		.andExpect(view().name(RequestController.REDIRECT));
 	}
 	
 	private Request getNewTestRequest() {

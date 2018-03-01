@@ -44,44 +44,6 @@ blue {
   background: #8ae234;
 }
 
-label {
-    width: 100%;
-    display: inline-block;
-}
-
-input {
-	margin: 5px;
-}
-
-.float {
-	float: left;
-}
-
-.floatB{
-	float: bottom;	
-}
-
-.inline {
-	display: inline;
-}
-
-.wide40{
-	width 40%;
-}
-
-.wide10{
-	width 10%;
-}
-
-.fh{
-	height: 30px;
-}
-
-
-.borderless{
-	border: 0;
-}
-
 fieldset {
 	display: inline;
 	float: bottom;
@@ -90,11 +52,6 @@ fieldset {
 /***************************************************************
 Requests
 ***************************************************************/
-
-#requestsForm {
-	position: relative;
-	top: 50px;
-}
 
 /***************************************************************
 Style of the main table
@@ -161,44 +118,4 @@ Style for the ERROR message
 .error {
 	font-size: large;
 	color: rgb(204, 0, 0);
-}
-
-/***************************************************************
-Miscellaneous
-***************************************************************/
-.center {
-	text-align: center;
-	vertical-align: middle;
-}
-
-.noborder {
-	border: 2px solid red;	
-}
-
-/***************************************************************
-Login form (login.jsp)
-***************************************************************/
-#login_form > fieldset {
-	display: inline;
-}
-
-#login_form > input[type=submit] {
-	margin-top: 5px;
-}
-
-#login_form > input[type=text]:focus {
-    background-color: lightblue;
-}
-
-/***************************************************************
-Settings form (settings.jsp)
-***************************************************************/
-#settings_form > div > p {
-	font-size: 17px;
-	margin-top: 5px;
-	margin-bottom: 2px;
-}
-
-#settings_form > input[type=submit] {
-	margin-top: 10px;
 }

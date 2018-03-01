@@ -17,18 +17,23 @@ $(document).ready(function(){
 });
 </script>
 <form:form method="POST" action="flights/add" modelAttribute="flight">
-	<fieldset>
-		<form:label path="origin"><spring:message code="flight.origin"/></form:label>
-		<form:input path="origin"/>
-	</fieldset>
-	<fieldset>
-		<form:label path="destination"><spring:message code="flight.destination"/></form:label>
-		<form:input path="destination"/>
-	</fieldset>
-	<fieldset>
-		<label><spring:message code="flight.departureDate"/></label>
-		<input type="text" name="dateAndTime" id="datetimepicker">
-	</fieldset>
+	<table>
+	<tr>
+		<td><form:label path="origin"><spring:message code="flight.origin"/></form:label></td>
+		<td><form:input path="origin"/></td>
+		<td><form:errors path="origin" cssClass="error" /></td>
+	</tr>
+	<tr>
+		<td><form:label path="destination"><spring:message code="flight.destination"/></form:label></td>
+		<td><form:input path="destination"/></td>
+		<td><form:errors path="destination" cssClass="error" /></td>
+	</tr>
+	<tr>
+		<td><form:label path="departureDate"><spring:message code="flight.departureDate"/></form:label></td>
+		<td><form:input path="departureDate" id="datetimepicker"/></td>
+		<td><form:errors path="departureDate" cssClass="error" /></td>
+	</tr>
+	</table>
 	<input type="submit" value="<spring:message code="command.add"/>"/>
 	</form:form>
 </body>

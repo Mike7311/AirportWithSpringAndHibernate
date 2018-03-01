@@ -144,7 +144,7 @@ public class CrewControllerTest {
 				.param("attendantIds", "4")
 				.param("attendantIds", "5"))
 		.andExpect(status().is3xxRedirection())
-		.andExpect(view().name("redirect:/flights"));
+		.andExpect(view().name(FlightController.REDIRECT));
 	}
 	
 	@Test
@@ -154,7 +154,7 @@ public class CrewControllerTest {
 		when(mockFlightRepository.find(flight.getId())).thenReturn(flight);
 		mockMvc.perform(post("/crew/free").param("flightId", "1"))
 			.andExpect(status().is3xxRedirection())
-			.andExpect(view().name("redirect:/flights"));
+			.andExpect(view().name(FlightController.REDIRECT));
 	}
 	
 	//Utility

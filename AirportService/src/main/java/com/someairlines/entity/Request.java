@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.someairlines.entity.util.RequestStatus;
@@ -21,14 +21,14 @@ public class Request {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@NotNull
+	@NotEmpty
 	@Column(name = "user_name")
 	private String username;
 	
-	@NotNull
+	@NotEmpty
 	private String header;
 	
-	@NotNull
+	@NotEmpty
 	@Size(max = 200)
 	private String description;
 	

@@ -3,6 +3,7 @@ package com.someairlines.web.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -11,6 +12,8 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import com.someairlines.entity.binder.StringToLocalDateTimeConverter;
 
 @Configuration
 @ComponentScan("com.someairlines.web")
@@ -38,6 +41,11 @@ public class AirportWebConfig extends WebMvcConfigurerAdapter {
         return lci;
     }
  
+	@Override
+    public void addFormatters (FormatterRegistry registry) {
+        registry.addConverter(new StringToLocalDateTimeConverter());
+    }
+	
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());

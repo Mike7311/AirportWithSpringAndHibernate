@@ -16,6 +16,13 @@ $(document).ready(function() {
 		$('button[name="configureEmployeeId"]').val(employeeId);
 		$('button[name="removeEmployeeId"]').val(employeeId);
 	});
+	$('button:not(button[name="addFlightPage"])').click(function(e){
+		if(!$('button[name="removeEmployeeId"]').val()){
+			e.preventDefault();
+			alert('select employee');
+			return;
+		}
+	});
 	$("#contentTable").tablesorter();
 	clickableRows();
 });

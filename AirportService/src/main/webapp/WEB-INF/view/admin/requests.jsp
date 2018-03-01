@@ -8,25 +8,41 @@
 <%@ include file="/WEB-INF/jspf/header.jspf" %>
 <%@ include file="/WEB-INF/jspf/directive/jquery.jspf" %>
 <script src="<c:url value="/static/js/rowSelect.js"/>"></script>
+<script src="<c:url value="/static/js/tablesorter/jquery.tablesorter.js"/>"></script>
+<script>
+$(document).ready(function() {
+	$('button').click(function(e){
+		if($('.selected').length == 0){
+			e.preventDefault();
+			alert('select request');
+			return;
+		}
+	});
+	$("#contentTable").tablesorter();
+	clickableRows();
+});
+</script>
 </head>
 <body>
 <div id="requestsForm">
 <form action="request/open">
-	<table id="contentTable">
+	<table id="contentTable" class="tablesorter">
+	<thead>
 	<tr>
 		<th>Id</th>
 		<th><spring:message code="request.header"/></th>
 		<th><spring:message code="username"/></th>
-		<th><spring:message code="selection"/></th>
 	</tr>
+	</thead>
+	<tbody>
 	<c:forEach items="${requests}" var="request">
 	<tr>
-		<td>${request.id}</td>
+		<td>${request.id}<input type="radio" id="rowRadio" name="requestId" value="${request.id}"></td>
 		<td>${request.header}</td>
 		<td>${request.username}</td>
-		<td><input type="radio" name="requestId" value="${request.id}">
 	</tr>
 	</c:forEach>
+	</tbody>
 	</table>
 	<button type="submit"><spring:message code="open"/></button>
 	</form>
