@@ -25,6 +25,7 @@ import com.someairlines.entity.FlightCrew;
  */
 @Controller
 @RequestMapping("/crew*")
+@PreAuthorize("hasRole('ROLE_DISPATCHER')")
 public class CrewController {
 
 	private FlightRepository flightRepository;
@@ -41,7 +42,6 @@ public class CrewController {
 	}
 	
 	@GetMapping
-	@PreAuthorize("hasRole('ROLE_USER')")
 	public String crew(Model model,
 			@RequestParam long flightId) {
 		List<Employee> pilots = employeeRepository.findPilots();
@@ -61,7 +61,6 @@ public class CrewController {
 	}
 	
 	@PostMapping("/create")
-	@PreAuthorize("hasRole('ROLE_USER')")
 	public String createCrew(@RequestParam long flightId,
 			@RequestParam long pilotId,
 			@RequestParam long navigatorId,
@@ -91,11 +90,10 @@ public class CrewController {
 	@PostMapping("/free")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String freeCrew(@RequestParam long flightId) {
-		Flight flight = flightRepository.find(flightId);
+		Flight flight = flightRepository.findAndInitialize(flightId);
 		logger.debug("Found flight: " + flight);
-		flight.setFlightCrew(null);
-		flightRepository.freeCrew(flight);
-		flightRepository.update(flight);
+		flightRepository.deleteCrew(flight);
 		return FlightController.REDIRECT;
 	}
+	
 }

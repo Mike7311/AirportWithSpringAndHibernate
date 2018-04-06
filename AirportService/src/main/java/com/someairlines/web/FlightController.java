@@ -72,9 +72,9 @@ public class FlightController {
 	@PostMapping(params = "remove")
 	public String removeFlight(@RequestParam("flightId") long id){
 		logger.debug("got Id: " + id);
-		Flight FlightToDelete = flightRepository.find(id);
-		flightRepository.delete(FlightToDelete);
-		logger.debug("removed Flight: " + FlightToDelete);
+		Flight flightToDelete = flightRepository.find(id);
+		flightRepository.delete(flightToDelete);
+		logger.debug("removed Flight: " + flightToDelete);
 		return REDIRECT;
 	}
 	

@@ -2,6 +2,7 @@ package com.someairlines.entity;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,14 +19,23 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
+
 import com.someairlines.entity.util.FlightStatus;
 
 @Entity
 @Table(name = "flight")
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@DynamicUpdate
 public class Flight {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+	@GenericGenerator(name = "native", strategy = "native")
 	@Column(updatable = false, nullable = false)
 	private long id;
 	
@@ -70,7 +80,6 @@ public class Flight {
 	public LocalDateTime getDepartureDate() {
 		return departureDate;
 	}
-	
 	public void setDepartureDate(LocalDateTime departureDate) {
 		this.departureDate = departureDate;
 	}
@@ -80,7 +89,6 @@ public class Flight {
 	public void setFlightStatus(FlightStatus flightStatus) {
 		this.flightStatus = flightStatus;
 	}
-	
 	public FlightCrew getFlightCrew() {
 		return flightCrew;
 	}

@@ -13,7 +13,7 @@ CREATE TABLE users (
 
 CREATE TABLE authorities (
 	user_id		INT			   NOT NULL,
-    authority   VARCHAR(10)    NOT NULL,
+    authority   VARCHAR(15)    NOT NULL,
     INDEX user_id (user_id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
@@ -42,19 +42,3 @@ CREATE TABLE flight_attendants (
 	PRIMARY KEY(attendant_id),
 	FOREIGN KEY(crew_id) REFERENCES flight_crew(crew_id)
 );
-
-CREATE TRIGGER set_crew_busy AFTER INSERT ON flight_crew
-    FOR EACH ROW
-    UPDATE employee SET free = 0 WHERE id IN(NEW.pilot_id, NEW.navigator_id, NEW.operator_id);
-
-CREATE TRIGGER set_attendants_busy AFTER INSERT ON flight_attendants
-	FOR EACH ROW
-	UPDATE employee SET free = 0 WHERE id = NEW.attendant_id;
-    
-CREATE TRIGGER free_crew BEFORE DELETE ON flight_crew
-    FOR EACH ROW
-    UPDATE employee SET free = 1 WHERE id IN(OLD.pilot_id, OLD.navigator_id, OLD.operator_id);
-
-CREATE TRIGGER free_attendants BEFORE DELETE ON flight_attendants
-	FOR EACH ROW
-	UPDATE employee SET free = 1 WHERE id = OLD.attendant_id;

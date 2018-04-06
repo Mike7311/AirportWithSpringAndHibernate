@@ -15183,3 +15183,42 @@
 2018-03-01 09:30:43,951 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
 2018-03-01 09:30:43,983 DEBUG c.s.w.FlightController [main] got Id: 1
 2018-03-01 09:30:43,985 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-02T09:30:43.969, flightStatus=EN_ROUTE]
+2018-03-24 08:24:14,530 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-24 08:24:17,597 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-24 08:24:17,841 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-24 08:24:17,861 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Нью-Йорк, destination=Куп'янськ, departureDate=2018-03-25T08:24:17.776, flightStatus=EN_ROUTE]
+2018-03-24 08:24:18,319 DEBUG c.s.w.FlightController [main] Flight to add: Flight [id=0, origin=moon, destination=sun, departureDate=2018-03-25T08:24, flightStatus=SCHEDULED]
+2018-03-24 08:24:18,335 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-24 08:24:18,335 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-24 08:24:18,385 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-24 08:24:18,386 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Нью-Йорк, destination=Куп'янськ, departureDate=2018-03-25T08:24:18.373, flightStatus=EN_ROUTE]
+2018-03-28 16:15:33,460 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+2018-03-28 16:15:36,897 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-28 16:15:36,904 DEBUG c.s.w.EmployeeController [main] removed Employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-28 16:15:36,920 DEBUG c.s.w.EmployeeController [main] Found employees: []
+2018-03-28 16:15:36,939 DEBUG c.s.w.EmployeeController [main] Employee to add: Employee [id=0, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-28 16:15:36,952 DEBUG c.s.w.EmployeeController [main] Got changed employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-28 16:15:36,955 DEBUG c.s.w.EmployeeController [main] Updated employee: Employee [id=1, firstName=Petr, lastName=Perviy, job=OPERATOR, email=Petya1672@mail.ru, isFree=false]
+2018-03-28 16:15:37,041 DEBUG c.s.w.EmployeeController [main] got Id: 1
+2018-03-28 16:15:37,042 DEBUG c.s.w.EmployeeController [main] Employee to change: Employee [id=1, firstName=Petr, lastName=Perviy, job=NAVIGATOR, email=Petya1672@mail.ru, isFree=true]
+2018-03-28 16:15:38,140 DEBUG c.s.w.RequestController [main] found request: Request [id=1, username=user1, header=test header, status=NEW]
+2018-03-28 16:15:38,154 DEBUG c.s.w.RequestController [main] Got request: Request [id=0, username=user1, header=test header, status=null]
+2018-03-28 16:15:38,245 DEBUG c.s.w.CrewController [main] found pilots: [Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]]
+2018-03-28 16:15:38,249 DEBUG c.s.w.CrewController [main] found operators: [Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]]
+2018-03-28 16:15:38,249 DEBUG c.s.w.CrewController [main] found navigators: [Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]]
+2018-03-28 16:15:38,250 DEBUG c.s.w.CrewController [main] found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-28 16:15:38,299 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-28 16:15:38,332 DEBUG c.s.w.CrewController [main] Found flight: Flight [id=1, origin=null, destination=null, departureDate=null, flightStatus=null]
+2018-03-28 16:15:38,333 DEBUG c.s.w.CrewController [main] Found pilot: Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true]
+2018-03-28 16:15:38,334 DEBUG c.s.w.CrewController [main] Found navigator: Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true]
+2018-03-28 16:15:38,335 DEBUG c.s.w.CrewController [main] Found operator: Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true]
+2018-03-28 16:15:38,336 DEBUG c.s.w.CrewController [main] Found attendants: [Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]
+2018-03-28 16:15:38,336 DEBUG c.s.w.CrewController [main] Created crew: FlightCrew [id=0, pilot=Employee [id=1, firstName=Pilot, lastName=First, job=PILOT, email=pilotFirst@gmail.com, isFree=true], navigator=Employee [id=2, firstName=Navigator, lastName=First, job=NAVIGATOR, email=navigatorFirst@gmail.com, isFree=true], operator=Employee [id=3, firstName=Operator, lastName=First, job=OPERATOR, email=operatorFirst@gmail.com, isFree=true], flightAttendants=[Employee [id=4, firstName=Attendant, lastName=First, job=FLIGHT_ATTENDANT, email=attendantFirst@gmail.com, isFree=true], Employee [id=5, firstName=Attendant, lastName=Second, job=FLIGHT_ATTENDANT, email=attendantSecond@gmail.com, isFree=true]]]
+2018-03-28 16:15:38,395 DEBUG c.s.w.FlightController [main] Found flights: []
+2018-03-28 16:15:38,426 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-28 16:15:38,427 DEBUG c.s.w.FlightController [main] removed Flight: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-29T16:15:38.417, flightStatus=EN_ROUTE]
+2018-03-28 16:15:38,539 DEBUG c.s.w.FlightController [main] Flight to add: Flight [id=0, origin=moon, destination=sun, departureDate=2018-03-29T16:15, flightStatus=SCHEDULED]
+2018-03-28 16:15:38,556 DEBUG c.s.w.FlightController [main] Got changed flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-28 16:15:38,557 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
+2018-03-28 16:15:38,590 DEBUG c.s.w.FlightController [main] got Id: 1
+2018-03-28 16:15:38,591 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-03-29T16:15:38.580, flightStatus=EN_ROUTE]

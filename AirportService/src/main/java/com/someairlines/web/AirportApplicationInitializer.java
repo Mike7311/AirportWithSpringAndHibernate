@@ -9,7 +9,7 @@ import com.someairlines.web.config.AirportSecurity;
 import com.someairlines.web.config.AirportWebConfig;
 
 @Order(1)
-public class AirportApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public final class AirportApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
     protected Class<?>[] getRootConfigClasses() {

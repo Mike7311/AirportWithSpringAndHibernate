@@ -4,6 +4,7 @@
 <%@ include file="/WEB-INF/jspf/head.jspf" %>
 <%@ include file="/WEB-INF/jspf/header.jspf" %>
 <%@ include file="/WEB-INF/jspf/directive/jquery.jspf" %>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
 <c:set var="title" value="Flights" scope="page"/>
 <script src="<c:url value="/static/js/rowSelect.js"/>"></script>
 <script src="<c:url value="/static/js/tablesorter/jquery.tablesorter.js"/>"></script>
@@ -49,7 +50,7 @@ $(document).ready(function() {
 						</td>
 						<td>${flight.origin}</td>
 						<td>${flight.destination}</td>
-						<td>${flight.departureDate}</td>
+						<td><javatime:format value="${flight.departureDate}" pattern="yyyy-MM-dd HH:mm" /></td>
 						<td>${flight.flightStatus}</td>
 					</tr>
 				</c:forEach>
@@ -67,7 +68,7 @@ $(document).ready(function() {
 				<button name="flightId" form="freeCrewForm" type="submit"><spring:message code="command.freeCrew"/></button><br/>
 	 		</security:authorize>
 	 		<form:form method="GET" id="crewForm" action="crew">
-		 		<security:authorize access="hasRole('ROLE_USER')">
+		 		<security:authorize access="hasRole('ROLE_DISPATCHER')">
 					<button name="flightId" type="submit"><spring:message code="command.createCrew"/></button><br/>
 		 		</security:authorize>
 	 		</form:form>

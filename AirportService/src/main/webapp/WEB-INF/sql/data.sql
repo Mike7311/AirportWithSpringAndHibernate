@@ -3,8 +3,8 @@ insert into users (username, password, enabled) values ('user1','24c9e15e52afc47
 insert into users (username, password, enabled) values ('user2','7e58d63b60197ceb55a1c487989a3720', 1);
 
 insert into authorities (user_id, authority) values (1, 'ROLE_ADMIN');
-insert into authorities (user_id, authority) values (2, 'ROLE_USER');
-insert into authorities (user_id, authority) values (3, 'ROLE_USER');
+insert into authorities (user_id, authority) values (2, 'ROLE_DISPATCHER');
+insert into authorities (user_id, authority) values (3, 'ROLE_DISPATCHER');
 
 insert into employee (id, first_name, last_name, email, job) values
 	(1, 'Pilot', 'One', 'pone@gmail.com', 'PILOT'),

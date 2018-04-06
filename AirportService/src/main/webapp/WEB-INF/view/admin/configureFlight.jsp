@@ -8,6 +8,7 @@
 <%@ include file="/WEB-INF/jspf/head.jspf" %>
 <%@ include file="/WEB-INF/jspf/directive/jquery.jspf" %>
 <%@ include file="/WEB-INF/jspf/directive/datetimepicker.jspf" %>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
 </head>
 <body>
 <script type="text/javascript">
@@ -15,6 +16,7 @@ $(document).ready(function(){
 	$('#datetimepicker').datetimepicker({
 		dateFormat: 'yy-mm-dd'
 	});
+	$('javatime:format').hide();
 });
 </script>
 <form:form method="POST" action="flights/change" modelAttribute="flight">
@@ -31,8 +33,9 @@ $(document).ready(function(){
 		<td><form:errors path="destination"/></td>
 	</tr>
 	<tr>
+		<javatime:format value="${flight.departureDate}" pattern="yyyy-MM-dd HH:mm" var="departureDate"/>
 		<td><form:label path="departureDate"><spring:message code="flight.departureDate"/></form:label></td>
-		<td><form:input path="departureDate" id="datetimepicker" value="${flight.departureDate}"/></td>
+		<td><form:input path="departureDate" id="datetimepicker" value="${departureDate}"/></td>
 		<td><form:errors path="departureDate"/></td>
 	</tr>
 	<tr>

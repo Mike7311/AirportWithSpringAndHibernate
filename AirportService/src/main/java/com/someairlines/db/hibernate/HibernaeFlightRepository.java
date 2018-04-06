@@ -2,7 +2,6 @@ package com.someairlines.db.hibernate;
 
 import java.util.List;
 
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -19,10 +18,8 @@ import com.someairlines.entity.Flight;
 
 @Transactional(isolation = Isolation.READ_COMMITTED)
 @Repository
-public class HibernaeFlightRepository implements FlightRepository{
+public class HibernaeFlightRepository implements FlightRepository {
 
-	private final String DELETE_CREW = "DELETE FlightCrew WHERE crew_id = ?";
-	
 	private SessionFactory sessionFactory;
 	
 	@Autowired
@@ -31,18 +28,31 @@ public class HibernaeFlightRepository implements FlightRepository{
 	}
 	
 	@Override
+	@Transactional(readOnly = true)
 	public List<Flight> findAll() {
 		CriteriaBuilder builder = currentSession().getCriteriaBuilder();
 		CriteriaQuery<Flight> criteria = builder.createQuery(Flight.class);
 		Root<Flight> rootFlight = criteria.from(Flight.class);
         criteria.select(rootFlight);
-        List<Flight> flights = currentSession().createQuery(criteria).getResultList();
+        List<Flight> flights = currentSession()
+        		.createQuery(criteria)
+        		.setHint("org.hibernate.cacheable", true)
+        		.getResultList();
 		return flights;
 	}
 
 	@Override
-	public Flight find(long id) {
+	@Transactional(readOnly = true)
+	public Flight find(final long id) {
 		return currentSession().get(Flight.class, id);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Flight findAndInitialize(final long id) {
+		Flight flight = currentSession().get(Flight.class, id);
+		flight.getFlightCrew();
+		return flight;
 	}
 
 	@Override
@@ -56,18 +66,17 @@ public class HibernaeFlightRepository implements FlightRepository{
 	}
 	
 	@Override
-	public void update(Flight flight) {
+	public void update(final Flight flight) {
 		currentSession().update(flight);
 	}
 	
 	@Override
-	public void freeCrew(Flight flight) {
-		Query query = currentSession().createQuery(DELETE_CREW);
-		query.setParameter(0, flight.getId());
-		query.executeUpdate();
+	public void deleteCrew(Flight flight) {
+		currentSession().delete(flight.getFlightCrew());
 	}
 	
 	private Session currentSession() {
 		return sessionFactory.getCurrentSession();
 	}
+
 }

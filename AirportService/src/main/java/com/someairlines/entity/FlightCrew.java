@@ -1,7 +1,9 @@
 package com.someairlines.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,29 +18,35 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name = "flight_crew")
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class FlightCrew {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy= GenerationType.AUTO, generator="native")
+	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "crew_id", nullable = false)
 	private long id;
 	
 	@NotNull
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private Employee pilot;
 	
 	@NotNull
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private Employee navigator;
 	
 	@NotNull
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private Employee operator;
 	
-	@NotNull
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.EAGER)
 	@Size(min=1, max=3)
 	@JoinTable(
             name = "flight_attendants",
@@ -80,7 +88,7 @@ public class FlightCrew {
 	}
 
 	public List<Employee> getFlightAttendants() {
-		return flightAttendants;
+		return new ArrayList<Employee>(flightAttendants);
 	}
 
 	public void setFlightAttendants(List<Employee> flightAttendants) {

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.someairlines.db.RequestRepository;
 import com.someairlines.entity.Request;
 import com.someairlines.entity.util.RequestStatus;
@@ -35,34 +34,39 @@ public class HibernateRequestRepository implements RequestRepository {
 	}
 	
 	@Override
-	public void save(Request request) {
+	public void save(final Request request) {
 		currentSession().persist(request);
 	}
 
+	@Transactional(readOnly = true)
 	@Override
-	public Request find(long id) {
+	public Request find(final long id) {
 		return currentSession().get(Request.class, id);
 	}
 
 	@Override
-	public void update(Request request) {
+	public void update(final Request request) {
 		currentSession().update(request);
 	}
 
+	@Transactional(readOnly = true)
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Request> findAllNew() {
 		Query query = currentSession().createQuery(findAllNew);
 		query.setParameter("status", RequestStatus.NEW);
+		query.setHint("org.hibernate.cacheable", true);
 		List<Request> requests = query.getResultList();
 		return requests;
 	}
 
+	@Transactional(readOnly = true)
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Request> findAllForUser(String username) {
+	public List<Request> findAllForUser(final String username) {
 		Query query = currentSession().createQuery(findByUser);
 		query.setParameter("name", username);
+		query.setHint("org.hibernate.cacheable", true);
 		List<Request> requests = query.getResultList();
 		return requests;
 	}

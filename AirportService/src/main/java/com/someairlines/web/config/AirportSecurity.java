@@ -25,7 +25,7 @@ public class AirportSecurity extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/flights*").hasAnyRole("ADMIN, USER")
+                .antMatchers("/flights*").hasAnyRole("ADMIN, DISPATCHER")
             .and()
                 .formLogin()
                     .loginPage("/login.jsp")

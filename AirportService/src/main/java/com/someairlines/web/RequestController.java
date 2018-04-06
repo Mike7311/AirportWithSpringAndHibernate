@@ -79,14 +79,14 @@ public class RequestController {
 	}
 	
 	@GetMapping("/write")
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@PreAuthorize("hasRole('ROLE_DISPATCHER')")
 	public String writeRequest(Model model) {
 		model.addAttribute("request", new Request());
 		return DISPATCHERFORM;
 	}
 	
 	@PostMapping("/write")
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@PreAuthorize("hasRole('ROLE_DISPATCHER')")
 	public String writeRequest(@Valid @ModelAttribute Request request, BindingResult result) {
 		if(result.hasErrors()) {
 			return DISPATCHERFORM;

@@ -25,4 +25,5 @@ public interface EmployeeRepository {
 	List<Employee> findFlightAttendats();
 
 	List<Employee> find(List<Long> ids);
+
 }

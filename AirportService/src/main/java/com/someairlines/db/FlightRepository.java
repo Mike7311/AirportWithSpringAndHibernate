@@ -10,11 +10,14 @@ public interface FlightRepository {
 	
 	Flight find(long id);
 	
+	Flight findAndInitialize(long id);
+	
 	void delete(Flight flight);
 	
 	void save(Flight flight);
 
 	void update(Flight flight);
-	
-	void freeCrew(Flight flight);
+
+	void deleteCrew(Flight flight);
+
 }

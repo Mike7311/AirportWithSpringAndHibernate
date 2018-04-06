@@ -20,7 +20,7 @@ import com.someairlines.entity.Employee;
 import com.someairlines.entity.util.Job;
 
 @Repository
-@Transactional(isolation = Isolation.READ_COMMITTED)
+@Transactional(isolation = Isolation.READ_COMMITTED, readOnly = true)
 public class HibernateEmployeeRepository implements EmployeeRepository{
 
 	private SessionFactory sessionFactory;
@@ -37,30 +37,36 @@ public class HibernateEmployeeRepository implements EmployeeRepository{
 	}
 	
 	@Override
-	public Employee find(long id) {
+	public Employee find(final long id) {
 		return currentSession().get(Employee.class, id);
 	}
 
 	@Override
-	public void delete(Employee emp) {
-		currentSession().delete(emp);
-	}
-
-	@Override
-	public void save(Employee emp) {
-		currentSession().persist(emp);
+	public List<Employee> find(final List<Long> ids) {
+		MultiIdentifierLoadAccess<Employee> multiLoadAccess = currentSession().byMultipleIds(Employee.class);
+		List<Employee> employees = multiLoadAccess.multiLoad(ids);
+		return employees;
 	}
 	
 	@Override
-	public void update(Employee emp) {
-		currentSession().update(emp);
+	public List<Employee> findAll() {
+		CriteriaBuilder builder = currentSession().getCriteriaBuilder();
+		CriteriaQuery<Employee> criteria = builder.createQuery(Employee.class);
+		Root<Employee> rootEmployee = criteria.from(Employee.class);
+        criteria.select(rootEmployee);
+        List<Employee> employees = currentSession()
+        		.createQuery(criteria)
+        		.setHint("org.hibernate.cacheable", true)
+        		.getResultList();
+        return employees;
 	}
-
+	
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Employee> findPilots() {
 		Query query = currentSession().createQuery(hql);
 		query.setParameter("job", Job.PILOT);
+		query.setHint("org.hibernate.cacheable", true);
 		List<Employee> pilots = query.getResultList();
 		return pilots;
 	}
@@ -70,6 +76,7 @@ public class HibernateEmployeeRepository implements EmployeeRepository{
 	public List<Employee> findNavigators() {
 		Query query = currentSession().createQuery(hql);
 		query.setParameter("job", Job.NAVIGATOR);
+		query.setHint("org.hibernate.cacheable", true);
 		List<Employee> navigators = query.getResultList();
 		return navigators;
 	}
@@ -79,6 +86,7 @@ public class HibernateEmployeeRepository implements EmployeeRepository{
 	public List<Employee> findOperators() {
 		Query query = currentSession().createQuery(hql);
 		query.setParameter("job", Job.OPERATOR);
+		query.setHint("org.hibernate.cacheable", true);
 		List<Employee> operators = query.getResultList();
 		return operators;
 	}
@@ -88,24 +96,27 @@ public class HibernateEmployeeRepository implements EmployeeRepository{
 	public List<Employee> findFlightAttendats() {
 		Query query = currentSession().createQuery(hql);
 		query.setParameter("job", Job.FLIGHT_ATTENDANT);
+		query.setHint("org.hibernate.cacheable", true);
 		List<Employee> flightAttendants = query.getResultList();
 		return flightAttendants;
 	}
 	
+	@Transactional(readOnly = false)
 	@Override
-	public List<Employee> find(List<Long> ids) {
-		MultiIdentifierLoadAccess<Employee> multiLoadAccess = currentSession().byMultipleIds(Employee.class);
-		List<Employee> employees = multiLoadAccess.multiLoad(ids);
-		return employees;
+	public void delete(final Employee emp) {
+		currentSession().delete(emp);
 	}
 
+	@Transactional(readOnly = false)
 	@Override
-	public List<Employee> findAll() {
-		CriteriaBuilder builder = currentSession().getCriteriaBuilder();
-		CriteriaQuery<Employee> criteria = builder.createQuery(Employee.class);
-		Root<Employee> rootEmployee = criteria.from(Employee.class);
-        criteria.select(rootEmployee);
-        List<Employee> employees = currentSession().createQuery(criteria).getResultList();
-        return employees;
+	public void save(final Employee emp) {
+		currentSession().persist(emp);
 	}
+	
+	@Transactional(readOnly = false)
+	@Override
+	public void update(final Employee emp) {
+		currentSession().update(emp);
+	}
+	
 }
