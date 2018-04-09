@@ -26,4 +26,6 @@ public interface EmployeeRepository {
 
 	List<Employee> find(List<Long> ids);
 
+	void setStatuses(List<Long> ids, boolean status);
+
 }

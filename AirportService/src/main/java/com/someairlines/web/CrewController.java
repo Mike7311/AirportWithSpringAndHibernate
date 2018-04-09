@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.someairlines.db.CrewUtil;
 import com.someairlines.db.EmployeeRepository;
 import com.someairlines.db.FlightRepository;
 import com.someairlines.entity.Employee;
@@ -32,13 +33,16 @@ public class CrewController {
 	
 	private EmployeeRepository employeeRepository;
 	
+	private CrewUtil crewUtil;
+	
 	private static final Logger logger = LogManager.getLogger(CrewController.class);
 	
 	@Autowired
 	public CrewController(EmployeeRepository employeeRepository,
-			FlightRepository flightRepository) {
+			FlightRepository flightRepository, CrewUtil crewUtil) {
 		this.employeeRepository = employeeRepository;
 		this.flightRepository = flightRepository;
+		this.crewUtil = crewUtil;
 	}
 	
 	@GetMapping
@@ -81,6 +85,7 @@ public class CrewController {
 		crew.setNavigator(navigator);
 		crew.setOperator(operator);
 		crew.setFlightAttendants(attendants);
+		crewUtil.setCrewFree(crew, false);
 		flight.setFlightCrew(crew);
 		logger.debug("Created crew: " + crew);
 		flightRepository.update(flight);
@@ -91,9 +96,12 @@ public class CrewController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String freeCrew(@RequestParam long flightId) {
 		Flight flight = flightRepository.findAndInitialize(flightId);
+		if(flight.getFlightCrew() == null) {
+			return FlightController.REDIRECT;
+		}
 		logger.debug("Found flight: " + flight);
+		crewUtil.setCrewFree(flight.getFlightCrew(), true);
 		flightRepository.deleteCrew(flight);
 		return FlightController.REDIRECT;
 	}
-	
 }

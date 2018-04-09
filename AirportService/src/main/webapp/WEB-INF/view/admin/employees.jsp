@@ -10,16 +10,23 @@
 <script src="<c:url value="/static/js/rowSelect.js"/>"></script>
 <script src="<c:url value="/static/js/tablesorter/jquery.tablesorter.js"/>"></script>
 <script>
+var free;
 $(document).ready(function() {
 	$('#contentTable').on('click', 'tr:not(#headers)', function(){
 		var employeeId = $(this).find('input:radio').val();
 		$('button[name="configureEmployeeId"]').val(employeeId);
 		$('button[name="removeEmployeeId"]').val(employeeId);
+		free = ($(this).find('#status').text() == 'true');
 	});
 	$('button:not(button[name="addEmployeePage"])').click(function(e){
 		if(!$('button[name="removeEmployeeId"]').val()){
 			e.preventDefault();
 			alert('select employee');
+			return;
+		}
+		if(!free) {
+			e.preventDefault();
+			alert('employee should be free');
 			return;
 		}
 	});
@@ -54,7 +61,7 @@ $(document).ready(function() {
 						<td>${employee.lastName}</td>
 						<td>${employee.job}</td>
 						<td>${employee.email}</td>
-						<td>${employee.free}</td>
+						<td id="status">${employee.free}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

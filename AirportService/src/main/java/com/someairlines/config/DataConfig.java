@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.mysql.jdbc.Driver;
 
 @Configuration
-@ComponentScan("com.someairlines.db.*")
+@ComponentScan("com.someairlines.db")
 @EnableTransactionManagement
 public class DataConfig {
 	

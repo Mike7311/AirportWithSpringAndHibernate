@@ -12,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.someairlines.db.CrewUtil;
 import com.someairlines.db.EmployeeRepository;
 import com.someairlines.db.FlightRepository;
 import com.someairlines.db.RequestRepository;
@@ -51,7 +52,7 @@ public class TestWebConfig extends WebMvcConfigurerAdapter {
 	
 	@Bean
 	public FlightController flightController() {
-		return new FlightController(flightRepository());
+		return new FlightController(flightRepository(), crewUtil());
 	}
 	
 	@Bean
@@ -61,7 +62,7 @@ public class TestWebConfig extends WebMvcConfigurerAdapter {
 	
 	@Bean
 	public CrewController crewController() {
-		return new CrewController(employeeRepository(), flightRepository());
+		return new CrewController(employeeRepository(), flightRepository(), crewUtil());
 	}
 	
 	@Bean
@@ -82,6 +83,11 @@ public class TestWebConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public RequestRepository requestRepository() {
 		return Mockito.mock(RequestRepository.class);
+	}
+	
+	@Bean
+	public CrewUtil crewUtil() {
+		return Mockito.mock(CrewUtil.class);
 	}
 	
 }

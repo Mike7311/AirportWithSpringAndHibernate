@@ -25,7 +25,9 @@ public class HibernateEmployeeRepository implements EmployeeRepository{
 
 	private SessionFactory sessionFactory;
 
-	private final String hql = "FROM Employee WHERE job=:job AND isFree='1'";
+	private final String findByJob = "from Employee where job=:job and isFree='1'";
+	
+	private final String setStatuses = "update Employee set isFree=:free where id in(:ids)";
 	
 	@Autowired
 	public HibernateEmployeeRepository(SessionFactory sessionFactory) {
@@ -64,7 +66,7 @@ public class HibernateEmployeeRepository implements EmployeeRepository{
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Employee> findPilots() {
-		Query query = currentSession().createQuery(hql);
+		Query query = currentSession().createQuery(findByJob);
 		query.setParameter("job", Job.PILOT);
 		query.setHint("org.hibernate.cacheable", true);
 		List<Employee> pilots = query.getResultList();
@@ -74,7 +76,7 @@ public class HibernateEmployeeRepository implements EmployeeRepository{
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Employee> findNavigators() {
-		Query query = currentSession().createQuery(hql);
+		Query query = currentSession().createQuery(findByJob);
 		query.setParameter("job", Job.NAVIGATOR);
 		query.setHint("org.hibernate.cacheable", true);
 		List<Employee> navigators = query.getResultList();
@@ -84,7 +86,7 @@ public class HibernateEmployeeRepository implements EmployeeRepository{
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Employee> findOperators() {
-		Query query = currentSession().createQuery(hql);
+		Query query = currentSession().createQuery(findByJob);
 		query.setParameter("job", Job.OPERATOR);
 		query.setHint("org.hibernate.cacheable", true);
 		List<Employee> operators = query.getResultList();
@@ -94,7 +96,7 @@ public class HibernateEmployeeRepository implements EmployeeRepository{
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Employee> findFlightAttendats() {
-		Query query = currentSession().createQuery(hql);
+		Query query = currentSession().createQuery(findByJob);
 		query.setParameter("job", Job.FLIGHT_ATTENDANT);
 		query.setHint("org.hibernate.cacheable", true);
 		List<Employee> flightAttendants = query.getResultList();
@@ -117,6 +119,15 @@ public class HibernateEmployeeRepository implements EmployeeRepository{
 	@Override
 	public void update(final Employee emp) {
 		currentSession().update(emp);
+	}
+	
+	@Transactional(readOnly = false)
+	@Override
+	public void setStatuses(final List<Long> ids, boolean status) {
+		Query query = currentSession().createQuery(setStatuses);
+		query.setParameter("free", status);
+		query.setParameter("ids", ids);
+		query.executeUpdate();
 	}
 	
 }

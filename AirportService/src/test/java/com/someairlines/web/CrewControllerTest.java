@@ -151,7 +151,7 @@ public class CrewControllerTest {
 	public void testFreeCrew() throws Exception {
 		Flight flight = getTestFlight();
 		flight.setFlightCrew(getTestCrew());
-		when(mockFlightRepository.find(flight.getId())).thenReturn(flight);
+		when(mockFlightRepository.findAndInitialize(flight.getId())).thenReturn(flight);
 		mockMvc.perform(post("/crew/free").param("flightId", "1"))
 			.andExpect(status().is3xxRedirection())
 			.andExpect(view().name(FlightController.REDIRECT));

@@ -35,15 +35,15 @@ public class FlightCrew {
 	private long id;
 	
 	@NotNull
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	private Employee pilot;
 	
 	@NotNull
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	private Employee navigator;
 	
 	@NotNull
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	private Employee operator;
 	
 	@OneToMany(fetch = FetchType.EAGER)

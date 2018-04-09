@@ -93,7 +93,7 @@ public class FlightControllerTest {
 	@Test
 	public void testRemoveFlight() throws Exception {
 		Flight flightToDelete = createFlight();
-		when(mockFlightRepository.find(flightToDelete.getId())).thenReturn(flightToDelete);
+		when(mockFlightRepository.findAndInitialize(flightToDelete.getId())).thenReturn(flightToDelete);
 		mockMvc.perform(post("/flight")
 		.param("remove", "")
 		.param("flightId", "1"))

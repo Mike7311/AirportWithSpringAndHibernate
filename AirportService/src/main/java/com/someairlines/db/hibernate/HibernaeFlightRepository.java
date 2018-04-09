@@ -6,6 +6,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,8 @@ public class HibernaeFlightRepository implements FlightRepository {
 	@Transactional(readOnly = true)
 	public Flight findAndInitialize(final long id) {
 		Flight flight = currentSession().get(Flight.class, id);
-		flight.getFlightCrew();
+		Hibernate.initialize(flight);
+		Hibernate.initialize(flight.getFlightCrew());
 		return flight;
 	}
 

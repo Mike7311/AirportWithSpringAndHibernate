@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.someairlines.db.CrewUtil;
 import com.someairlines.db.FlightRepository;
 import com.someairlines.entity.Flight;
 import com.someairlines.entity.util.FlightStatus;
@@ -31,6 +32,8 @@ public class FlightController {
 	
 	private final FlightRepository flightRepository;
 	
+	private final CrewUtil crewUtil;
+	
 	public static final String REDIRECT = "redirect:/flight";
 	
 	public static final String ADD = "admin/addFlight";
@@ -38,8 +41,9 @@ public class FlightController {
 	public static final String CONFIGURE = "admin/configureFlight";
 	
 	@Autowired
-	public FlightController(FlightRepository flightRepository) {
+	public FlightController(FlightRepository flightRepository, CrewUtil crewUtil) {
 		this.flightRepository = flightRepository;
+		this.crewUtil = crewUtil;
 	}
 	
 	@GetMapping
@@ -70,18 +74,21 @@ public class FlightController {
 	}
 	
 	@PostMapping(params = "remove")
-	public String removeFlight(@RequestParam("flightId") long id){
-		logger.debug("got Id: " + id);
-		Flight flightToDelete = flightRepository.find(id);
+	public String removeFlight(@RequestParam long flightId){
+		logger.debug("got Id: " + flightId);
+		Flight flightToDelete = flightRepository.findAndInitialize(flightId);
+		if(flightToDelete.getFlightCrew() != null) {
+			crewUtil.setCrewFree(flightToDelete.getFlightCrew(), true);
+		}
 		flightRepository.delete(flightToDelete);
 		logger.debug("removed Flight: " + flightToDelete);
 		return REDIRECT;
 	}
 	
 	@PostMapping(params = "changeFlightPage")
-	public String changeFlightPage(Model model, @RequestParam("flightId") long id) {
-		logger.debug("got Id: " + id);
-		Flight flightToChange = flightRepository.find(id);
+	public String changeFlightPage(Model model, @RequestParam long flightId) {
+		logger.debug("got Id: " + flightId);
+		Flight flightToChange = flightRepository.find(flightId);
 		logger.debug("Flight to change: " + flightToChange);
 		model.addAttribute("flight", flightToChange);
 		model.addAttribute("flightStatuses", Arrays.asList(FlightStatus.values()));
