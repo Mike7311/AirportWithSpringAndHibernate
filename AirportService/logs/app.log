@@ -15298,3 +15298,4 @@
 2018-04-07 10:37:24,592 DEBUG c.s.w.FlightController [main] Updated flight: Flight [id=0, origin=moon, destination=sun, departureDate=null, flightStatus=CANCELED]
 2018-04-07 10:37:24,630 DEBUG c.s.w.FlightController [main] got Id: 1
 2018-04-07 10:37:24,633 DEBUG c.s.w.FlightController [main] Flight to change: Flight [id=1, origin=Mars, destination=Uranus, departureDate=2018-04-08T10:37:24.619, flightStatus=EN_ROUTE]
+2018-04-13 09:48:19,130 DEBUG o.j.logging [main] Logging Provider: org.jboss.logging.Log4j2LoggerProvider

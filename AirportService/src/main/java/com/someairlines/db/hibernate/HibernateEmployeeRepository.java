@@ -10,7 +10,6 @@ import javax.persistence.criteria.Root;
 import org.hibernate.MultiIdentifierLoadAccess;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +28,6 @@ public class HibernateEmployeeRepository implements EmployeeRepository{
 	
 	private final String setStatuses = "update Employee set isFree=:free where id in(:ids)";
 	
-	@Autowired
 	public HibernateEmployeeRepository(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}

@@ -18,10 +18,13 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.someairlines.entity.util.RequestStatus;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "request")
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Data
 public class Request {
 	
 	@Id
@@ -42,41 +45,5 @@ public class Request {
 	
 	@Enumerated(EnumType.STRING)
 	private RequestStatus status;
-	
-	public long getId() {
-		return id;
-	}
-	public void setId(long requestId) {
-		this.id = requestId;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getHeader() {
-		return header;
-	}
-	public void setHeader(String header) {
-		this.header = header;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public RequestStatus getStatus() {
-		return status;
-	}
-	public void setStatus(RequestStatus status) {
-		this.status = status;
-	}
-	@Override
-	public String toString() {
-		return "Request [id=" + id + ", username=" + username + ", header=" + header 
-				+ ", status=" + status + "]";
-	}
 	
 }

@@ -22,10 +22,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "flight_crew")
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Data
 public class FlightCrew {
 
 	@Id
@@ -54,97 +57,9 @@ public class FlightCrew {
             inverseJoinColumns = @JoinColumn(name = "attendant_id")
     )
 	private List<Employee> flightAttendants;
-	
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public Employee getPilot() {
-		return pilot;
-	}
-
-	public void setPilot(Employee pilot) {
-		this.pilot = pilot;
-	}
-
-	public Employee getNavigator() {
-		return navigator;
-	}
-
-	public void setNavigator(Employee navigator) {
-		this.navigator = navigator;
-	}
-
-	public Employee getOperator() {
-		return operator;
-	}
-
-	public void setOperator(Employee operator) {
-		this.operator = operator;
-	}
 
 	public List<Employee> getFlightAttendants() {
 		return new ArrayList<Employee>(flightAttendants);
-	}
-
-	public void setFlightAttendants(List<Employee> flightAttendants) {
-		this.flightAttendants = flightAttendants;
-	}
-
-	@Override
-	public String toString() {
-		return "FlightCrew [id=" + id + ", pilot=" + pilot + ", navigator=" + navigator + ", operator=" + operator
-				+ ", flightAttendants=" + flightAttendants + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((flightAttendants == null) ? 0 : flightAttendants.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((navigator == null) ? 0 : navigator.hashCode());
-		result = prime * result + ((operator == null) ? 0 : operator.hashCode());
-		result = prime * result + ((pilot == null) ? 0 : pilot.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		FlightCrew other = (FlightCrew) obj;
-		if (flightAttendants == null) {
-			if (other.flightAttendants != null)
-				return false;
-		} else if (!flightAttendants.equals(other.flightAttendants))
-			return false;
-		if (id != other.id)
-			return false;
-		if (navigator == null) {
-			if (other.navigator != null)
-				return false;
-		} else if (!navigator.equals(other.navigator))
-			return false;
-		if (operator == null) {
-			if (other.operator != null)
-				return false;
-		} else if (!operator.equals(other.operator))
-			return false;
-		if (pilot == null) {
-			if (other.pilot != null)
-				return false;
-		} else if (!pilot.equals(other.pilot))
-			return false;
-		return true;
 	}
 
 }

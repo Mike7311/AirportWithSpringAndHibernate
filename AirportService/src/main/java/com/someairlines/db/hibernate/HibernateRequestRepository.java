@@ -6,7 +6,6 @@ import javax.persistence.Query;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +23,6 @@ public class HibernateRequestRepository implements RequestRepository {
 	
 	private SessionFactory sessionFactory;
 	
-	@Autowired
 	public HibernateRequestRepository(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}

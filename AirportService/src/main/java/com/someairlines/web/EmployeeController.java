@@ -5,9 +5,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,8 +24,6 @@ import com.someairlines.entity.util.Job;
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 public class EmployeeController {
 
-	private static final Logger logger = LogManager.getLogger(EmployeeController.class);
-	
 	private EmployeeRepository employeeRepository;
 	
 	public static final String REDIRECT = "redirect:/employee";
@@ -37,7 +32,6 @@ public class EmployeeController {
 	
 	public static final String CONFIGURE = "admin/configureEmployee";
 	
-	@Autowired
 	public EmployeeController(EmployeeRepository employeeRepository) {
 		this.employeeRepository = employeeRepository;
 	}
@@ -46,7 +40,6 @@ public class EmployeeController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String employees(Model model) {
 		List<Employee> employees = employeeRepository.findAll();
-		logger.debug("Found employees: " + employees);
 		model.addAttribute("employees", employees);
 		return "admin/employees";
 	}
@@ -65,25 +58,20 @@ public class EmployeeController {
 			return ADD;
 		}
 		employee.setFree(true);
-		logger.debug("Employee to add: " + employee);
 		employeeRepository.save(employee);
 		return REDIRECT;
 	}
 	
 	@PostMapping(params = "removeEmployeeId")
 	public String removeEmployee(@RequestParam("removeEmployeeId") long Id) {
-		logger.debug("got Id: " + Id);
 		Employee employeeToDelete = employeeRepository.find(Id);
 		employeeRepository.delete(employeeToDelete);
-		logger.debug("removed Employee: " + employeeToDelete);
 		return REDIRECT;
 	}
 	
 	@PostMapping(params = "configureEmployeeId")
 	public String changeEmployeePage(Model model, @RequestParam("configureEmployeeId") long Id) {
-		logger.debug("got Id: " + Id);
 		Employee employeeToChange = employeeRepository.find(Id);
-		logger.debug("Employee to change: " + employeeToChange);
 		model.addAttribute("employee", employeeToChange);
 		model.addAttribute("jobs", Arrays.asList(Job.values()));
 		return CONFIGURE;
@@ -94,9 +82,7 @@ public class EmployeeController {
 		if(result.hasErrors()) {
 			return CONFIGURE;
 		}
-		logger.debug("Got changed employee: " + employee);
 		employeeRepository.update(employee);
-		logger.debug("Updated employee: " + employee);
 		return REDIRECT;
 	}
 }

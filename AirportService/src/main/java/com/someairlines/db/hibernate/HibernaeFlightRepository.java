@@ -9,7 +9,6 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +22,6 @@ public class HibernaeFlightRepository implements FlightRepository {
 
 	private SessionFactory sessionFactory;
 	
-	@Autowired
 	public HibernaeFlightRepository(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}

@@ -4,9 +4,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -35,9 +32,6 @@ public class RequestController {
 	
 	public static final String DISPATCHERFORM = "dispatcher/requestForm";
 
-	private static final Logger logger = LogManager.getLogger(RequestController.class);
-	
-	@Autowired
 	public RequestController(RequestRepository requestRepository) {
 		this.requestRepository = requestRepository;
 	}
@@ -63,7 +57,6 @@ public class RequestController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String openRequest(@RequestParam long requestId, Model model) {
 		Request request = requestRepository.find(requestId);
-		logger.debug("found request: " + request);
 		model.addAttribute("request", request);
 		return "admin/requestInfo";
 	}
@@ -91,7 +84,6 @@ public class RequestController {
 		if(result.hasErrors()) {
 			return DISPATCHERFORM;
 		}
-		logger.debug("Got request: " + request);
 		request.setStatus(RequestStatus.NEW);
 		requestRepository.save(request);
 		return REDIRECT;

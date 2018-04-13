@@ -5,9 +5,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,8 +25,6 @@ import com.someairlines.entity.util.FlightStatus;
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 public class FlightController {
 
-	private static final Logger logger = LogManager.getLogger(FlightController.class);
-	
 	private final FlightRepository flightRepository;
 	
 	private final CrewUtil crewUtil;
@@ -40,7 +35,6 @@ public class FlightController {
 	
 	public static final String CONFIGURE = "admin/configureFlight";
 	
-	@Autowired
 	public FlightController(FlightRepository flightRepository, CrewUtil crewUtil) {
 		this.flightRepository = flightRepository;
 		this.crewUtil = crewUtil;
@@ -50,7 +44,6 @@ public class FlightController {
 	@PreAuthorize("isAuthenticated()")
 	public String flights(Model model) {
 		List<Flight> flights = flightRepository.findAll();
-		logger.debug("Found flights: " + flights);
 		model.addAttribute("flights", flights);
 		return "flights";
 	}
@@ -68,28 +61,23 @@ public class FlightController {
 			return ADD;
 		}
 		flight.setFlightStatus(FlightStatus.SCHEDULED);
-		logger.debug("Flight to add: " + flight);
 		flightRepository.save(flight);
 		return REDIRECT;
 	}
 	
 	@PostMapping(params = "remove")
 	public String removeFlight(@RequestParam long flightId){
-		logger.debug("got Id: " + flightId);
 		Flight flightToDelete = flightRepository.findAndInitialize(flightId);
 		if(flightToDelete.getFlightCrew() != null) {
 			crewUtil.setCrewFree(flightToDelete.getFlightCrew(), true);
 		}
 		flightRepository.delete(flightToDelete);
-		logger.debug("removed Flight: " + flightToDelete);
 		return REDIRECT;
 	}
 	
 	@PostMapping(params = "changeFlightPage")
 	public String changeFlightPage(Model model, @RequestParam long flightId) {
-		logger.debug("got Id: " + flightId);
 		Flight flightToChange = flightRepository.find(flightId);
-		logger.debug("Flight to change: " + flightToChange);
 		model.addAttribute("flight", flightToChange);
 		model.addAttribute("flightStatuses", Arrays.asList(FlightStatus.values()));
 		return CONFIGURE;
@@ -100,9 +88,7 @@ public class FlightController {
 		if(result.hasErrors()) {
 			return CONFIGURE;
 		}
-		logger.debug("Got changed flight: " + flight);
 		flightRepository.update(flight);
-		logger.debug("Updated flight: " + flight);
 		return REDIRECT;
 	}
 }
