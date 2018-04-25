@@ -27,18 +27,3 @@ CREATE TABLE employee (
 	free		TINYINT			NOT NULL DEFAULT 1,
 	PRIMARY KEY (id)
 );
-
-CREATE TABLE flight_crew (
-	crew_id 		INT			NOT NULL AUTO_INCREMENT,
-	pilot_id		INT			NOT NULL,
-	navigator_id	INT			NOT NULL,
-	operator_id		INT			NOT NULL,
-	PRIMARY KEY(crew_id)
-);
-
-CREATE TABLE flight_attendants (
-	crew_id			INT			NOT NULL,
-	attendant_id	INT			NOT NULL,
-	PRIMARY KEY(attendant_id),
-	FOREIGN KEY(crew_id) REFERENCES flight_crew(crew_id)
-);

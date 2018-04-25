@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -49,9 +49,13 @@ public class HibernaeFlightRepository implements FlightRepository {
 	@Override
 	@Transactional(readOnly = true)
 	public Flight findAndInitialize(final long id) {
-		Flight flight = currentSession().get(Flight.class, id);
-		Hibernate.initialize(flight);
-		Hibernate.initialize(flight.getFlightCrew());
+		CriteriaBuilder cb = currentSession().getCriteriaBuilder();
+		CriteriaQuery<Flight> q = cb.createQuery(Flight.class);
+		Root<Flight> f = q.from(Flight.class);
+		f.fetch("flightCrew", JoinType.LEFT);
+		q.select(f);
+		q.where(cb.equal(f.get("id"), id));
+		Flight flight = (Flight) currentSession().createQuery(q).getSingleResult();
 		return flight;
 	}
 
