@@ -10,12 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.someairlines.db.CrewUtil;
-import com.someairlines.db.EmployeeRepository;
-import com.someairlines.db.FlightRepository;
 import com.someairlines.entity.Employee;
-import com.someairlines.entity.Flight;
-import com.someairlines.entity.FlightCrew;
+import com.someairlines.service.EmployeeService;
+import com.someairlines.service.FlightService;
 
 /**
  * @author Kotkov Mikhail
@@ -26,26 +23,23 @@ import com.someairlines.entity.FlightCrew;
 @PreAuthorize("hasRole('ROLE_DISPATCHER')")
 public class CrewController {
 
-	private FlightRepository flightRepository;
+	private FlightService flightService;
 	
-	private EmployeeRepository employeeRepository;
+	private EmployeeService employeeService;
 	
-	private CrewUtil crewUtil;
-	
-	public CrewController(EmployeeRepository employeeRepository,
-			FlightRepository flightRepository, CrewUtil crewUtil) {
-		this.employeeRepository = employeeRepository;
-		this.flightRepository = flightRepository;
-		this.crewUtil = crewUtil;
+	public CrewController(EmployeeService employeeService,
+			FlightService flightService) {
+		this.employeeService = employeeService;
+		this.flightService = flightService;
 	}
 	
 	@GetMapping
 	public String crew(Model model,
 			@RequestParam long flightId) {
-		List<Employee> pilots = employeeRepository.findPilots();
-		List<Employee> operators = employeeRepository.findOperators();
-		List<Employee> navigators = employeeRepository.findNavigators();
-		List<Employee> attendants = employeeRepository.findFlightAttendats();
+		List<Employee> pilots = employeeService.findPilots();
+		List<Employee> operators = employeeService.findOperators();
+		List<Employee> navigators = employeeService.findNavigators();
+		List<Employee> attendants = employeeService.findFlightAttendants();
 		model.addAttribute("flightId", flightId);
 		model.addAttribute("pilots", pilots);
 		model.addAttribute("operators", operators);
@@ -59,32 +53,16 @@ public class CrewController {
 			@RequestParam long pilotId,
 			@RequestParam long navigatorId,
 			@RequestParam long operatorId,
-			@RequestParam List<Long> attendantIds, Model model) {
-		Flight flight = flightRepository.find(flightId);
-		Employee pilot = employeeRepository.find(pilotId);
-		Employee navigator = employeeRepository.find(navigatorId);
-		Employee operator = employeeRepository.find(operatorId);
-		List<Employee> attendants = employeeRepository.find(attendantIds);
-		FlightCrew crew = new FlightCrew();
-		crew.setPilot(pilot);
-		crew.setNavigator(navigator);
-		crew.setOperator(operator);
-		crew.setFlightAttendants(attendants);
-		crewUtil.setCrewFree(crew, false);
-		flight.setFlightCrew(crew);
-		flightRepository.update(flight);
+			@RequestParam List<Long> attendantIds) {
+		flightService.createCrew(flightId, pilotId, navigatorId, operatorId
+				,attendantIds);
 		return FlightController.REDIRECT;
 	}
 	
 	@PostMapping("/free")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String freeCrew(@RequestParam long flightId) {
-		Flight flight = flightRepository.findAndInitialize(flightId);
-		if(flight.getFlightCrew() == null) {
-			return FlightController.REDIRECT;
-		}
-		crewUtil.setCrewFree(flight.getFlightCrew(), true);
-		flightRepository.deleteCrew(flight);
+		flightService.deleteCrew(flightId);
 		return FlightController.REDIRECT;
 	}
 }

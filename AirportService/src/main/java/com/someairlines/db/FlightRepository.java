@@ -1,23 +1,28 @@
 package com.someairlines.db;
 
-import java.util.List;
+import javax.persistence.QueryHint;
+import javax.transaction.Transactional;
+
+import org.springframework.data.jpa.repository.EntityGraph;
+import org.springframework.data.jpa.repository.EntityGraph.EntityGraphType;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.QueryHints;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import com.someairlines.entity.Flight;
 
-public interface FlightRepository {
+public interface FlightRepository extends CrudRepository<Flight, Long> {
 
-	List<Flight> findAll();
+	@QueryHints(@QueryHint(name="org.hibernate.cacheable", value="true"))
+	Iterable<Flight> findAll();
 	
-	Flight find(long id);
+	@EntityGraph(value = "flight.flightCrew", type = EntityGraphType.LOAD)
+	Flight findById(long id);
 	
-	Flight findAndInitialize(long id);
-	
-	void delete(Flight flight);
-	
-	void save(Flight flight);
-
-	void update(Flight flight);
-
-	void deleteCrew(Flight flight);
-
+	@Query("delete FlightCrew where crew_id=:#{#flight.flightCrew.id}")
+	@Modifying
+	@Transactional
+	void deleteCrew(@Param("flight") Flight flight);
 }

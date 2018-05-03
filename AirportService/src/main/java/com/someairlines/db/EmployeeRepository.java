@@ -2,30 +2,39 @@ package com.someairlines.db;
 
 import java.util.List;
 
+import javax.persistence.QueryHint;
+
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.QueryHints;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
 import com.someairlines.entity.Employee;
 
-public interface EmployeeRepository {
+public interface EmployeeRepository extends CrudRepository<Employee, Long>{
 
-	void delete(Employee emp);
+	@QueryHints(@QueryHint(name="org.hibernate.cacheable", value="true"))
+	Iterable<Employee> findAll();
 	
-	void save(Employee emp);
-
-	Employee find(long id);
-	
-	List<Employee> findAll();
-	
-	void update(Employee emp);
-	
+	@QueryHints(@QueryHint(name="org.hibernate.cacheable", value="true"))
+	@Query("from Employee e where e.job = 'PILOT'")
 	List<Employee> findPilots();
 	
+	@QueryHints(@QueryHint(name="org.hibernate.cacheable", value="true"))
+	@Query("from Employee e where e.job = 'NAVIGATOR'")
 	List<Employee> findNavigators();
 	
+	@QueryHints(@QueryHint(name="org.hibernate.cacheable", value="true"))
+	@Query("from Employee e where e.job = 'OPERATOR'")
 	List<Employee> findOperators();
 	
-	List<Employee> findFlightAttendats();
-
-	List<Employee> find(List<Long> ids);
-
-	void setStatuses(List<Long> ids, boolean status);
+	@QueryHints(@QueryHint(name="org.hibernate.cacheable", value="true"))
+	@Query("from Employee e where e.job = 'FLIGHT_ATTENDANT'")
+	List<Employee> findFlightAttendants();
+	
+	@Query("update Employee e set e.isFree=:status where e.id in(:ids)")
+	@Modifying
+	void setStatuses(@Param("ids") List<Long> ids, @Param("status") boolean status);
 
 }

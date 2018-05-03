@@ -1,8 +1,8 @@
 package com.someairlines.web;
 
 import java.util.Arrays;
-import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,19 +15,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.someairlines.db.CrewUtil;
-import com.someairlines.db.FlightRepository;
 import com.someairlines.entity.Flight;
+import com.someairlines.entity.FlightCrew;
 import com.someairlines.entity.util.FlightStatus;
+import com.someairlines.service.FlightService;
 
 @Controller
 @RequestMapping("/flight*")
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 public class FlightController {
 
-	private final FlightRepository flightRepository;
+	private final FlightService flightService;
 	
-	private final CrewUtil crewUtil;
 	
 	public static final String REDIRECT = "redirect:/flight";
 	
@@ -35,15 +34,14 @@ public class FlightController {
 	
 	public static final String CONFIGURE = "admin/configureFlight";
 	
-	public FlightController(FlightRepository flightRepository, CrewUtil crewUtil) {
-		this.flightRepository = flightRepository;
-		this.crewUtil = crewUtil;
+	public FlightController(FlightService flightService) {
+		this.flightService = flightService;
 	}
 	
 	@GetMapping
 	@PreAuthorize("isAuthenticated()")
 	public String flights(Model model) {
-		List<Flight> flights = flightRepository.findAll();
+		Iterable<Flight> flights = flightService.findAll();
 		model.addAttribute("flights", flights);
 		return "flights";
 	}
@@ -56,39 +54,37 @@ public class FlightController {
 	}
 	
 	@PostMapping("/add")
-	public String addFlight(@Valid @ModelAttribute Flight flight, BindingResult result) {
+	public String addFlight(@Valid @ModelAttribute Flight flight, BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			return ADD;
 		}
 		flight.setFlightStatus(FlightStatus.SCHEDULED);
-		flightRepository.save(flight);
+		flightService.save(flight);
 		return REDIRECT;
 	}
 	
 	@PostMapping(params = "remove")
 	public String removeFlight(@RequestParam long flightId){
-		Flight flightToDelete = flightRepository.findAndInitialize(flightId);
-		if(flightToDelete.getFlightCrew() != null) {
-			crewUtil.setCrewFree(flightToDelete.getFlightCrew(), true);
-		}
-		flightRepository.delete(flightToDelete);
+		flightService.delete(flightId);
 		return REDIRECT;
 	}
 	
 	@PostMapping(params = "changeFlightPage")
-	public String changeFlightPage(Model model, @RequestParam long flightId) {
-		Flight flightToChange = flightRepository.find(flightId);
+	public String changeFlightPage(Model model, HttpSession session,@RequestParam long flightId) {
+		Flight flightToChange = flightService.findAndInitialize(flightId);
 		model.addAttribute("flight", flightToChange);
+		session.setAttribute("flightCrew", flightToChange.getFlightCrew());
 		model.addAttribute("flightStatuses", Arrays.asList(FlightStatus.values()));
 		return CONFIGURE;
 	}
 	
 	@PostMapping("/change")
-	public String changeFlight(@Valid @ModelAttribute Flight flight, BindingResult result) {
+	public String changeFlight(@Valid @ModelAttribute Flight flight, BindingResult result, HttpSession session) {
 		if(result.hasErrors()) {
 			return CONFIGURE;
 		}
-		flightRepository.update(flight);
+		flight.setFlightCrew((FlightCrew) session.getAttribute("flightCrew"));
+		flightService.save(flight);
 		return REDIRECT;
 	}
 }

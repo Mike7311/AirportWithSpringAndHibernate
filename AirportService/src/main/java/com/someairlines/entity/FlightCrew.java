@@ -49,7 +49,7 @@ public class FlightCrew {
 	@OneToOne(fetch = FetchType.EAGER)
 	private Employee operator;
 	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
 	@Size(min=1, max=3)
 	@JoinTable(
             name = "flight_attendants",

@@ -2,17 +2,14 @@ package com.someairlines.db;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import com.someairlines.entity.Request;
 
-public interface RequestRepository {
-
-	void save(Request request);
+public interface RequestRepository extends CrudRepository<Request, Long>{
 	
-	Request find(long id);
+	List<Request> findAllByUsernameIs(String username);
 	
-	List<Request> findAllForUser(String username);
-	
-	void update(Request request);
-
+	@Query("from Request r where r.status='NEW'")
 	List<Request> findAllNew();
 }

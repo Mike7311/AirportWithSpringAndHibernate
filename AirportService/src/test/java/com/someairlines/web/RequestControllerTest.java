@@ -7,12 +7,12 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -31,9 +31,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.someairlines.config.TestSecurityConfig;
 import com.someairlines.config.TestWebConfig;
-import com.someairlines.db.RequestRepository;
 import com.someairlines.entity.Request;
 import com.someairlines.entity.util.RequestStatus;
+import com.someairlines.service.RequestService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {TestWebConfig.class, TestSecurityConfig.class})
@@ -43,7 +43,7 @@ public class RequestControllerTest {
 	MockMvc mockMvc;
 	
 	@Autowired
-	private RequestRepository mockRequestRepository;
+	private RequestService mockRequestService;
 	
 	@Autowired
 	private WebApplicationContext context;
@@ -56,7 +56,7 @@ public class RequestControllerTest {
 	
 	@Before
 	public void init() {
-		reset(mockRequestRepository);
+		reset(mockRequestService);
 		mockMvc = MockMvcBuilders
 				.webAppContextSetup(context)
 				.apply(springSecurity())
@@ -68,13 +68,13 @@ public class RequestControllerTest {
 	public void testAdminRequestsPage() throws Exception {
 		Request testRequest = getNewTestRequest();
 		List<Request> testRequestList = Collections.singletonList(testRequest);
-		when(mockRequestRepository.findAllNew()).thenReturn(testRequestList);
+		when(mockRequestService.findAllNew()).thenReturn(testRequestList);
 		mockMvc.perform(get("/request"))
 		.andExpect(status().isOk())
 		.andExpect(view().name("admin/requests"))
 		.andExpect(model().attribute("requests", is(testRequestList)));
-		verify(mockRequestRepository, times(1)).findAllNew();
-		verifyNoMoreInteractions(mockRequestRepository);
+		verify(mockRequestService, times(1)).findAllNew();
+		verifyNoMoreInteractions(mockRequestService);
 	}
 	
 	@Test
@@ -82,19 +82,19 @@ public class RequestControllerTest {
 	public void testDispatcherRequestsPage() throws Exception {
 		Request testRequest = getNewTestRequest();
 		List<Request> testRequestList = Collections.singletonList(testRequest);
-		when(mockRequestRepository.findAllForUser(TESTUSER)).thenReturn(testRequestList);
+		when(mockRequestService.findForUsername(TESTUSER)).thenReturn(testRequestList);
 		mockMvc.perform(get("/request"))
 		.andExpect(status().isOk())
 		.andExpect(view().name("dispatcher/requests"))
 		.andExpect(model().attribute("requests", is(testRequestList)));
-		verify(mockRequestRepository, times(1)).findAllForUser(TESTUSER);
-		verifyNoMoreInteractions(mockRequestRepository);
+		verify(mockRequestService, times(1)).findForUsername(TESTUSER);
+		verifyNoMoreInteractions(mockRequestService);
 	}
 	
 	@Test
 	public void testOpenRequest() throws Exception {
 		Request testRequest = getNewTestRequest();
-		when(mockRequestRepository.find(1)).thenReturn(testRequest);
+		when(mockRequestService.find(1L)).thenReturn(testRequest);
 		mockMvc.perform(get("/request/open")
 				.param("requestId", "1"))
 		.andExpect(status().isOk())
@@ -135,7 +135,7 @@ public class RequestControllerTest {
 	@Test
 	public void testProcessRequest () throws Exception {
 		Request testRequest = getNewTestRequest();
-		when(mockRequestRepository.find(1)).thenReturn(testRequest);
+		when(mockRequestService.find(1L)).thenReturn(testRequest);
 		mockMvc.perform(post("/request/update")
 				.param("requestId", "1")
 				.param("status", "APPROVED"))

@@ -1,7 +1,6 @@
 package com.someairlines.web;
 
 import java.util.Arrays;
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -15,16 +14,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.someairlines.db.EmployeeRepository;
 import com.someairlines.entity.Employee;
 import com.someairlines.entity.util.Job;
+import com.someairlines.service.EmployeeService;
 
 @Controller
 @RequestMapping("/employee*")
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 public class EmployeeController {
 
-	private EmployeeRepository employeeRepository;
+	private EmployeeService employeeService;
 	
 	public static final String REDIRECT = "redirect:/employee";
 	
@@ -32,14 +31,14 @@ public class EmployeeController {
 	
 	public static final String CONFIGURE = "admin/configureEmployee";
 	
-	public EmployeeController(EmployeeRepository employeeRepository) {
-		this.employeeRepository = employeeRepository;
+	public EmployeeController(EmployeeService employeeService) {
+		this.employeeService = employeeService;
 	}
 	
 	@GetMapping
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String employees(Model model) {
-		List<Employee> employees = employeeRepository.findAll();
+		Iterable<Employee> employees = employeeService.findAll();
 		model.addAttribute("employees", employees);
 		return "admin/employees";
 	}
@@ -58,20 +57,20 @@ public class EmployeeController {
 			return ADD;
 		}
 		employee.setFree(true);
-		employeeRepository.save(employee);
+		employeeService.save(employee);
 		return REDIRECT;
 	}
 	
 	@PostMapping(params = "removeEmployeeId")
 	public String removeEmployee(@RequestParam("removeEmployeeId") long Id) {
-		Employee employeeToDelete = employeeRepository.find(Id);
-		employeeRepository.delete(employeeToDelete);
+		Employee employeeToDelete = employeeService.find(Id);
+		employeeService.delete(employeeToDelete);
 		return REDIRECT;
 	}
 	
 	@PostMapping(params = "configureEmployeeId")
 	public String changeEmployeePage(Model model, @RequestParam("configureEmployeeId") long Id) {
-		Employee employeeToChange = employeeRepository.find(Id);
+		Employee employeeToChange = employeeService.find(Id);
 		model.addAttribute("employee", employeeToChange);
 		model.addAttribute("jobs", Arrays.asList(Job.values()));
 		return CONFIGURE;
@@ -82,7 +81,7 @@ public class EmployeeController {
 		if(result.hasErrors()) {
 			return CONFIGURE;
 		}
-		employeeRepository.update(employee);
+		employeeService.save(employee);
 		return REDIRECT;
 	}
 }

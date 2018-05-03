@@ -25,9 +25,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.someairlines.config.TestWebConfig;
-import com.someairlines.db.EmployeeRepository;
 import com.someairlines.entity.Employee;
 import com.someairlines.entity.util.Job;
+import com.someairlines.service.EmployeeService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestWebConfig.class)
@@ -36,14 +36,14 @@ public class EmployeeControllerTest {
 
 	MockMvc mockMvc;
 	@Autowired
-	EmployeeRepository mockEmployeeRepository;
+	EmployeeService mockEmployeeService;
 	
 	@Autowired
 	private WebApplicationContext context;
 
 	@Before
 	public void init() {
-		reset(mockEmployeeRepository);
+		reset(mockEmployeeService);
 		mockMvc = MockMvcBuilders
 				.webAppContextSetup(context)
 				.build();
@@ -90,7 +90,7 @@ public class EmployeeControllerTest {
 	@Test
 	public void testRemoveEmployee() throws Exception {
 		Employee employeeToDelete = createEmployee();
-		when(mockEmployeeRepository.find(employeeToDelete.getId())).thenReturn(employeeToDelete);
+		when(mockEmployeeService.find(employeeToDelete.getId())).thenReturn(employeeToDelete);
 		mockMvc.perform(post("/employee")
 		.param("removeEmployeeId", "1"))
 		.andExpect(status().is3xxRedirection())
@@ -101,7 +101,7 @@ public class EmployeeControllerTest {
 	public void testChangeEmployeePage() throws Exception{
 		List<Job> jobs = Arrays.asList(Job.values());
 		Employee employeeToChange = createEmployee();
-		when(mockEmployeeRepository.find(employeeToChange.getId())).thenReturn(employeeToChange);
+		when(mockEmployeeService.find(employeeToChange.getId())).thenReturn(employeeToChange);
 		mockMvc.perform(post("/employee")
 				.param("configureEmployeeId", "1"))
 			.andExpect(status().isOk())

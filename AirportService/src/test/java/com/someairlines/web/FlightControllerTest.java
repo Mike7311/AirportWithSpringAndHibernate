@@ -26,9 +26,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.someairlines.config.TestWebConfig;
-import com.someairlines.db.FlightRepository;
 import com.someairlines.entity.Flight;
 import com.someairlines.entity.util.FlightStatus;
+import com.someairlines.service.FlightService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestWebConfig.class)
@@ -37,7 +37,7 @@ public class FlightControllerTest {
 	
 	MockMvc mockMvc;
 	@Autowired
-	FlightRepository mockFlightRepository;
+	FlightService mockFlightService;
 	
 	@Autowired
 	private WebApplicationContext context;
@@ -48,7 +48,7 @@ public class FlightControllerTest {
 	
 	@Before
 	public void init() {
-		reset(mockFlightRepository);
+		reset(mockFlightService);
 		mockMvc = MockMvcBuilders
 				.webAppContextSetup(context)
 				.build();
@@ -93,7 +93,7 @@ public class FlightControllerTest {
 	@Test
 	public void testRemoveFlight() throws Exception {
 		Flight flightToDelete = createFlight();
-		when(mockFlightRepository.findAndInitialize(flightToDelete.getId())).thenReturn(flightToDelete);
+		when(mockFlightService.find(flightToDelete.getId())).thenReturn(flightToDelete);
 		mockMvc.perform(post("/flight")
 		.param("remove", "")
 		.param("flightId", "1"))
@@ -105,7 +105,7 @@ public class FlightControllerTest {
 	public void testChangeFlightPage() throws Exception{
 		List<FlightStatus> flightStatuses = Arrays.asList(FlightStatus.values());
 		Flight flightToChange = createFlight();
-		when(mockFlightRepository.find(flightToChange.getId())).thenReturn(flightToChange);
+		when(mockFlightService.find(flightToChange.getId())).thenReturn(flightToChange);
 		mockMvc.perform(post("/flight")
 				.param("changeFlightPage", "")
 				.param("flightId", "1"))

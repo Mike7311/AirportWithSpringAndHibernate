@@ -48,6 +48,7 @@ public class Employee {
 	private String lastName;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = "smallint")
 	private Job job;
 	
 	@Email(message = "Invalid email")

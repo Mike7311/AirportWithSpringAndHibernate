@@ -23,7 +23,7 @@ CREATE TABLE employee (
 	first_name  VARCHAR(20)		NOT NULL,
 	last_name  	VARCHAR(20)		NOT NULL,
 	email		VARCHAR(30)		NOT NULL,
-	job			VARCHAR(20)		NOT NULL,
+	job			VARCHAR(16)		NOT NULL,
 	free		TINYINT			NOT NULL DEFAULT 1,
 	PRIMARY KEY (id)
 );

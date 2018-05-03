@@ -12,11 +12,10 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.someairlines.db.CrewUtil;
-import com.someairlines.db.EmployeeRepository;
-import com.someairlines.db.FlightRepository;
-import com.someairlines.db.RequestRepository;
 import com.someairlines.entity.binder.StringToLocalDateTimeConverter;
+import com.someairlines.service.EmployeeService;
+import com.someairlines.service.FlightService;
+import com.someairlines.service.RequestService;
 import com.someairlines.web.CrewController;
 import com.someairlines.web.EmployeeController;
 import com.someairlines.web.FlightController;
@@ -52,42 +51,37 @@ public class TestWebConfig extends WebMvcConfigurerAdapter {
 	
 	@Bean
 	public FlightController flightController() {
-		return new FlightController(flightRepository(), crewUtil());
+		return new FlightController(flightService());
 	}
 	
 	@Bean
 	public EmployeeController employeeController() {
-		return new EmployeeController(employeeRepository());
+		return new EmployeeController(employeeService());
 	}
 	
 	@Bean
 	public CrewController crewController() {
-		return new CrewController(employeeRepository(), flightRepository(), crewUtil());
+		return new CrewController(employeeService(), flightService());
 	}
 	
 	@Bean
 	public RequestController requestController() {
-		return new RequestController(requestRepository());
+		return new RequestController(requestService());
 	}
 	
 	@Bean
-	public FlightRepository flightRepository() {
-		return Mockito.mock(FlightRepository.class);
+	public FlightService flightService() {
+		return Mockito.mock(FlightService.class);
 	}
 	
 	@Bean
-	public EmployeeRepository employeeRepository() {
-		return Mockito.mock(EmployeeRepository.class);
+	public EmployeeService employeeService() {
+		return Mockito.mock(EmployeeService.class);
 	}
 	
 	@Bean
-	public RequestRepository requestRepository() {
-		return Mockito.mock(RequestRepository.class);
-	}
-	
-	@Bean
-	public CrewUtil crewUtil() {
-		return Mockito.mock(CrewUtil.class);
+	public RequestService requestService() {
+		return Mockito.mock(RequestService.class);
 	}
 	
 }

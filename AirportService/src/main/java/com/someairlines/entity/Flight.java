@@ -6,13 +6,14 @@ import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
@@ -33,6 +34,8 @@ import lombok.Data;
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @DynamicUpdate
+@NamedEntityGraph(name = "flight.flightCrew",
+attributeNodes = @NamedAttributeNode("flightCrew"))
 @Data
 public class Flight {
 
@@ -54,11 +57,11 @@ public class Flight {
 	@Future(message = "departure date must be in future")
 	private LocalDateTime departureDate;
 	
-	@Enumerated(EnumType.ORDINAL)
-    @Column(name = "status")
+	@Enumerated
+    @Column(name = "status", columnDefinition = "smallint")
 	private FlightStatus flightStatus;
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "flight_crew_id")
 	private FlightCrew flightCrew;
 	

@@ -18,22 +18,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.someairlines.db.RequestRepository;
 import com.someairlines.entity.Request;
 import com.someairlines.entity.util.RequestStatus;
+import com.someairlines.service.RequestService;
 
 @RequestMapping("/request*")
 @Controller
 public class RequestController {
 
-	private RequestRepository requestRepository;
+	private RequestService requestService;
 	
 	public static final String REDIRECT = "redirect:/request";
 	
 	public static final String DISPATCHERFORM = "dispatcher/requestForm";
 
-	public RequestController(RequestRepository requestRepository) {
-		this.requestRepository = requestRepository;
+	public RequestController(RequestService requestService) {
+		this.requestService = requestService;
 	}
 	
 	@GetMapping
@@ -44,10 +44,10 @@ public class RequestController {
 		GrantedAuthority adminAuthority = new SimpleGrantedAuthority("ROLE_ADMIN");
 		if(auth.getAuthorities().contains(adminAuthority)) {
 			view = "admin/requests";
-			requests = requestRepository.findAllNew();
+			requests = requestService.findAllNew();
 		} else {
 			view = "dispatcher/requests";
-			requests = requestRepository.findAllForUser(auth.getName());
+			requests = requestService.findForUsername(auth.getName());
 		}
 		model.addAttribute("requests", requests);
 		return view;
@@ -56,7 +56,7 @@ public class RequestController {
 	@GetMapping("/open")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String openRequest(@RequestParam long requestId, Model model) {
-		Request request = requestRepository.find(requestId);
+		Request request = requestService.find(requestId);
 		model.addAttribute("request", request);
 		return "admin/requestInfo";
 	}
@@ -64,10 +64,10 @@ public class RequestController {
 	@PostMapping("/update")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String processRequest(@RequestParam long requestId, @RequestParam String status) {
-		Request request = requestRepository.find(requestId);
+		Request request = requestService.find(requestId);
 		RequestStatus requestStatus = RequestStatus.valueOf(status);
 		request.setStatus(requestStatus);
-		requestRepository.update(request);
+		requestService.save(request);
 		return REDIRECT;
 	}
 	
@@ -85,7 +85,7 @@ public class RequestController {
 			return DISPATCHERFORM;
 		}
 		request.setStatus(RequestStatus.NEW);
-		requestRepository.save(request);
+		requestService.save(request);
 		return REDIRECT;
 	}
 }

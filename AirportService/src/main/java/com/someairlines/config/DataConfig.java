@@ -5,32 +5,25 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.hibernate.cache.ehcache.EhCacheRegionFactory;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.mysql.jdbc.Driver;
 
 @Configuration
-@ComponentScan("com.someairlines.db")
 @EnableTransactionManagement
+@EnableJpaRepositories("com.someairlines.db")
+@ComponentScan("com.someairlines.service")
 public class DataConfig {
 	
-	@Bean
-	public LocalSessionFactoryBean sessionFactory() {
-	    LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
-	    sessionFactoryBean.setDataSource(dataSource());
-	    sessionFactoryBean.setPackagesToScan("com.someairlines.entity");
-	    sessionFactoryBean.setHibernateProperties(hibernateProperties());
-	    return sessionFactoryBean;
-	}
-
 	private Properties hibernateProperties() {
 	    Properties properties = new Properties();
 	    properties.put("hibernate.dialect", org.hibernate.dialect.MySQL5Dialect.class.getName());
@@ -54,11 +47,22 @@ public class DataConfig {
 	}
 	
 	@Bean
-	@Autowired
-	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
-	   HibernateTransactionManager txManager = new HibernateTransactionManager();
-	   txManager.setSessionFactory(sessionFactory);
-	   return txManager;
-	}
+	  public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+	    HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+	    vendorAdapter.setGenerateDdl(true);
+	    LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+	    factory.setJpaVendorAdapter(vendorAdapter);
+	    factory.setJpaProperties(hibernateProperties());
+	    factory.setDataSource(dataSource());
+	    factory.setPackagesToScan("com.someairlines.entity");
+	    return factory;
+	  }
+
+	  @Bean
+	  public PlatformTransactionManager transactionManager() {
+	    JpaTransactionManager txManager = new JpaTransactionManager();
+	    txManager.setEntityManagerFactory(entityManagerFactory().getObject());
+	    return txManager;
+	  }
 	
 }

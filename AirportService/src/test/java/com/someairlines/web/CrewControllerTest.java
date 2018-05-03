@@ -7,8 +7,8 @@ import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -16,7 +16,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,12 +29,12 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.someairlines.config.TestWebConfig;
-import com.someairlines.db.EmployeeRepository;
-import com.someairlines.db.FlightRepository;
 import com.someairlines.entity.Employee;
 import com.someairlines.entity.Flight;
 import com.someairlines.entity.FlightCrew;
 import com.someairlines.entity.util.Job;
+import com.someairlines.service.EmployeeService;
+import com.someairlines.service.FlightService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestWebConfig.class)
@@ -44,10 +43,10 @@ public class CrewControllerTest {
 
 	MockMvc mockMvc;
 	@Autowired
-	EmployeeRepository mockEmployeeRepository;
+	EmployeeService mockEmployeeService;
 	
 	@Autowired
-	FlightRepository mockFlightRepository;
+	FlightService mockFlightService;
 	
 	@Autowired
 	CrewController crewController;
@@ -57,8 +56,8 @@ public class CrewControllerTest {
 	
 	@Before
 	public void init() {
-		reset(mockFlightRepository);
-		reset(mockEmployeeRepository);
+		reset(mockFlightService);
+		reset(mockEmployeeService);
 		mockMvc = MockMvcBuilders
 				.webAppContextSetup(context)
 				.build();
@@ -67,10 +66,10 @@ public class CrewControllerTest {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void testCrews() throws Exception {
-		when(mockEmployeeRepository.findPilots()).thenReturn(getTestPilots());
-		when(mockEmployeeRepository.findOperators()).thenReturn(getTestOperators());
-		when(mockEmployeeRepository.findNavigators()).thenReturn(getTestNavigators());
-		when(mockEmployeeRepository.findFlightAttendats()).thenReturn(getTestAttendants());
+		when(mockEmployeeService.findPilots()).thenReturn(getTestPilots());
+		when(mockEmployeeService.findOperators()).thenReturn(getTestOperators());
+		when(mockEmployeeService.findNavigators()).thenReturn(getTestNavigators());
+		when(mockEmployeeService.findFlightAttendants()).thenReturn(getTestAttendants());
 		mockMvc.perform(get("/crew").param("flightId", "1"))
 		.andExpect(view().name("dispatcher/formCrew")).andExpect(status().isOk())
 		.andExpect(model().attribute("flightId", is(1L)))
@@ -131,11 +130,12 @@ public class CrewControllerTest {
 		Employee navigator = getTestNavigators().get(0);
 		Employee operator = getTestOperators().get(0);
 		List<Employee> attendants = getTestAttendants();
-		when(mockFlightRepository.find(flight.getId())).thenReturn(flight);
-		when(mockEmployeeRepository.find(pilot.getId())).thenReturn(pilot);
-		when(mockEmployeeRepository.find(navigator.getId())).thenReturn(navigator);
-		when(mockEmployeeRepository.find(operator.getId())).thenReturn(operator);
-		when(mockEmployeeRepository.find(getIds(attendants))).thenReturn(attendants);
+		when(mockFlightService.find(flight.getId())).thenReturn(flight);
+		when(mockEmployeeService.find(pilot.getId())).thenReturn(pilot);
+		when(mockEmployeeService.find(navigator.getId())).thenReturn(navigator);
+		when(mockEmployeeService.find(operator.getId())).thenReturn(operator);
+		attendants.forEach(attendant 
+				-> when(mockEmployeeService.find(attendant.getId())).thenReturn(attendant));
 		mockMvc.perform(post("/crew/create")
 				.param("flightId", "1")
 				.param("pilotId", "1")
@@ -151,7 +151,7 @@ public class CrewControllerTest {
 	public void testFreeCrew() throws Exception {
 		Flight flight = getTestFlight();
 		flight.setFlightCrew(getTestCrew());
-		when(mockFlightRepository.findAndInitialize(flight.getId())).thenReturn(flight);
+		when(mockFlightService.find(flight.getId())).thenReturn(flight);
 		mockMvc.perform(post("/crew/free").param("flightId", "1"))
 			.andExpect(status().is3xxRedirection())
 			.andExpect(view().name(FlightController.REDIRECT));
@@ -214,10 +214,6 @@ public class CrewControllerTest {
 		attendant2.setFree(true);
 		List<Employee> attendants = Arrays.asList(new Employee[]{attendant, attendant2});
 		return attendants;
-	}
-	
-	private List<Long> getIds(List<Employee> list) {
-		return list.stream().map(e -> e.getId()).collect(Collectors.toList());
 	}
 	
 	private FlightCrew getTestCrew() {
