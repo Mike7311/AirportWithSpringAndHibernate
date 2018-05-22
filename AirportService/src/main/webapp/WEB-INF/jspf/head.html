@@ -1,10 +1,7 @@
-<%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
-<%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
-
 <%--=========================================================================== 
 Bind CSS document.
 ===========================================================================--%>
-	<link href="<c:url value="/static/css/style.css/"/>" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" media="all" href="../../static/css/sttyle.css" th:href="@{/css/stsm.css}"/>
 <%--=========================================================================== 
 If you define http-equiv attribute, set the content type and the charset the same
 as you set them in a page directive.
