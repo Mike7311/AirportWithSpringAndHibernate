@@ -31,6 +31,16 @@
   </properties>
   <dependencies>
   <!-- Misc -->
+  	<dependency>
+		<groupId>jstl</groupId>
+		<artifactId>jstl</artifactId>
+		<version>${jstl.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>${lombok.version}</version>
+	</dependency>
 	<dependency>
 	    <groupId>org.hibernate</groupId>
 	    <artifactId>hibernate-c3p0</artifactId>
@@ -46,22 +56,12 @@
 	    <artifactId>mysql-connector-java</artifactId>
 	    <version>${mysql.connector.version}</version>
 	</dependency>
-	<!-- Thymeleaf -->
 	<dependency>
-	    <groupId>org.thymeleaf</groupId>
-	    <artifactId>thymeleaf-spring4</artifactId>
-	    <version>${spring-thymeleaf.version}</version>
+	    <groupId>net.sargue</groupId>
+	    <artifactId>java-time-jsptags</artifactId>
+	    <version>${java-time-jsptags.version}</version>
 	</dependency>
-	<dependency>
-	    <groupId>org.thymeleaf.extras</groupId>
-	    <artifactId>thymeleaf-extras-java8time</artifactId>
-	    <version>${thymeleaf-extras.java8time.version}</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.thymeleaf.extras</groupId>
-	    <artifactId>thymeleaf-extras-springsecurity4</artifactId>
-	    <version>${thymeleaf-extras-springsecurity4.version}</version>
-	</dependency>
+	
 	<!-- Spring -->
 	<dependency>
 		<groupId>org.springframework</groupId>
@@ -147,16 +147,6 @@
 	    <version>${hamcrest.version}</version>
 	    <scope>test</scope>
 	</dependency>
-	<dependency>
-		<groupId>jstl</groupId>
-		<artifactId>jstl</artifactId>
-		<version>${jstl.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.projectlombok</groupId>
-		<artifactId>lombok</artifactId>
-		<version>${lombok.version}</version>
-	</dependency>
   </dependencies>
   <build>
   	<plugins>
@@ -173,6 +163,9 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-war-plugin</artifactId>
             <version>2.6</version>
+            <configuration>
+            	<failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
         </plugin>
 		</plugins>
     <finalName>AirportService</finalName>

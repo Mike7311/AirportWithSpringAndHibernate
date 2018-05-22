@@ -1,15 +1,19 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
+
+<html>
 <head>
     <title>Login</title>
 </head>
 
 <body>
-<p th:if="${not empty param.error}" class="error">
-	<font color="red">
+<c:if test="${not empty param.error}">
+    <font color="red">
         Login error. <br />
         Reason : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-    </font></p>
-<form method="post" th:action="@{/j_spring_security_check}">
+    </font>
+</c:if>
+<form method="POST" action="<c:url value="/j_spring_security_check" />">
     <table>
         <tr>
             <td align="right">Username</td>
