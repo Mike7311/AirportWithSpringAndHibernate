@@ -1,0 +1,12 @@
+<%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
+
+<%--=========================================================================== 
+Bind CSS document.
+===========================================================================--%>
+	<link href="<c:url value="/static/css/style.css/"/>" rel="stylesheet"/>
+<%--=========================================================================== 
+If you define http-equiv attribute, set the content type and the charset the same
+as you set them in a page directive.
+===========================================================================--%> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
