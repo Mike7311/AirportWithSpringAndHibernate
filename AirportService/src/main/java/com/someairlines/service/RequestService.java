@@ -2,14 +2,14 @@ package com.someairlines.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.someairlines.db.RequestRepository;
 import com.someairlines.entity.Request;
 
-@Transactional
+@Transactional(readOnly = true)
 @Service
 public class RequestService {
 
@@ -31,6 +31,7 @@ public class RequestService {
 		return requestRepository.findOne(requestId);
 	}
 
+	@Transactional
 	public void save(Request request) {
 		requestRepository.save(request);
 	}

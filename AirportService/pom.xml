@@ -25,9 +25,6 @@
   	<lombok.version>1.16.20</lombok.version>
   	<mysql.connector.version>5.1.40</mysql.connector.version>
   	<mockito.version>1.10.19</mockito.version>
-  	<spring-thymeleaf.version>3.0.9.RELEASE</spring-thymeleaf.version>
-  	<thymeleaf-extras.java8time.version>3.0.1.RELEASE</thymeleaf-extras.java8time.version>
-  	<thymeleaf-extras-springsecurity4.version>3.0.2.RELEASE</thymeleaf-extras-springsecurity4.version>
   </properties>
   <dependencies>
   <!-- Misc -->

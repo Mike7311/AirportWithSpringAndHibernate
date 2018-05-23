@@ -2,15 +2,15 @@ package com.someairlines.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.someairlines.db.EmployeeRepository;
 import com.someairlines.entity.Employee;
 
-@Transactional
+@Transactional(readOnly = true)
 @Service
 public class EmployeeService {
 
@@ -24,6 +24,7 @@ public class EmployeeService {
 		return employeeRepository.findAll();
 	}
 
+	@Transactional
 	public Employee save(@Valid Employee employee) {
 		return employeeRepository.save(employee);
 	}
@@ -32,6 +33,7 @@ public class EmployeeService {
 		return employeeRepository.findOne(employeeId);
 	}
 
+	@Transactional
 	public void delete(Employee employeeToDelete) {
 		employeeRepository.delete(employeeToDelete);
 	}

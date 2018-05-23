@@ -3,6 +3,7 @@ package com.someairlines.web.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.servlet.ViewResolver;
@@ -32,6 +33,7 @@ public class AirportWebConfig extends WebMvcConfigurerAdapter {
 	@Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("forward:/login.jsp");
+        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 	
 	@Bean

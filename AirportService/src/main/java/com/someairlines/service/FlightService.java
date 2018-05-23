@@ -3,10 +3,10 @@ package com.someairlines.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.someairlines.db.EmployeeRepository;
 import com.someairlines.db.FlightRepository;
@@ -27,10 +27,12 @@ public class FlightService {
 		this.employeeRepository = employeeRepository;
 	}
 
+	@Transactional(readOnly = true)
 	public Iterable<Flight> findAll() {
 		return flightRepository.findAll();
 	}
 
+	@Transactional(readOnly = true)
 	public Flight find(long flightId) {
 		return flightRepository.findOne(flightId);
 	}
@@ -39,6 +41,7 @@ public class FlightService {
 		return flightRepository.save(flight);
 	}
 
+	@Transactional(readOnly = true)
 	public Flight findAndInitialize(long flightId) {
 		return flightRepository.findById(flightId);
 	}
