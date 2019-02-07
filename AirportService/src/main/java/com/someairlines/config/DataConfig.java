@@ -40,7 +40,7 @@ public class DataConfig {
 	public DataSource dataSource() {
 	    SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
 	    dataSource.setDriverClass(Driver.class);
-	    dataSource.setUrl("jdbc:mysql://localhost:3306/airport");
+	    dataSource.setUrl("jdbc:mysql://localhost:3306/airport?useSSL=false");
 	    dataSource.setUsername("judge73");
 	    dataSource.setPassword("wasd");
 	    return dataSource;
