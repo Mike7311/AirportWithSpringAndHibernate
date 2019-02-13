@@ -48,7 +48,7 @@ public class Employee {
 	private String lastName;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(columnDefinition = "smallint")
+	@Column
 	private Job job;
 	
 	@Email(message = "Invalid email")
@@ -56,7 +56,7 @@ public class Employee {
 	private String email;
 	
 	@NotNull
-	@Column(name = "free")
+	@Column(name = "free", columnDefinition = "bit default 1")
 	private boolean isFree;
 	
 }

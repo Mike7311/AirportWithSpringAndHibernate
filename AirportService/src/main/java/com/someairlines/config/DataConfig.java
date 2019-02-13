@@ -27,7 +27,7 @@ public class DataConfig {
 	private Properties hibernateProperties() {
 	    Properties properties = new Properties();
 	    properties.put("hibernate.dialect", org.hibernate.dialect.MySQL5Dialect.class.getName());
-	    properties.put("hibernate.hbm2ddl.auto", "update");
+	    properties.put("hibernate.hbm2ddl.auto", "create");
 	    properties.put("hibernate.id.new_generator_mappings", false);
 	    properties.put("hibernate.cache.use_second_level_cache", "true");
 	    properties.put("hibernate.cache.region.factory_class", EhCacheRegionFactory.class);

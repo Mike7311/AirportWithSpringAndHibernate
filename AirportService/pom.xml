@@ -92,6 +92,7 @@
 	    <artifactId>log4j-core</artifactId>
 	    <version>${log4j.version}</version>
 	</dependency>
+	
 	<!-- Validation -->
 	<dependency>
 	    <groupId>org.hibernate.validator</groupId>
@@ -136,6 +137,11 @@
   </dependencies>
   <build>
   	<plugins>
+  		<plugin>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-maven-plugin</artifactId>
+  			<version>9.3.13.v20161014</version>
+		</plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -153,7 +159,7 @@
             	<failOnMissingWebXml>false</failOnMissingWebXml>
             </configuration>
         </plugin>
-		</plugins>
+  	</plugins>
     <finalName>AirportService</finalName>
   </build>
 </project>
