@@ -1,10 +1,11 @@
 package com.someairlines.web;
 
-import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -36,6 +37,7 @@ import com.someairlines.service.FlightService;
 public class FlightControllerTest {
 	
 	MockMvc mockMvc;
+	
 	@Autowired
 	FlightService mockFlightService;
 	
@@ -105,7 +107,7 @@ public class FlightControllerTest {
 	public void testChangeFlightPage() throws Exception{
 		List<FlightStatus> flightStatuses = Arrays.asList(FlightStatus.values());
 		Flight flightToChange = createFlight();
-		when(mockFlightService.find(flightToChange.getId())).thenReturn(flightToChange);
+		when(mockFlightService.findAndInitialize(flightToChange.getId())).thenReturn(flightToChange);
 		mockMvc.perform(post("/flight")
 				.param("changeFlightPage", "")
 				.param("flightId", "1"))

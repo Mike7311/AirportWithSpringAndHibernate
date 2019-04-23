@@ -5,24 +5,30 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.hibernate.cache.ehcache.EhCacheRegionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.mysql.jdbc.Driver;
+import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
+@PropertySource("classpath:application.properties")
 @EnableTransactionManagement
 @EnableJpaRepositories("com.someairlines.db")
 @ComponentScan("com.someairlines.service")
 public class DataConfig {
+	
+	@Autowired
+	private Environment environment;
 	
 	private Properties hibernateProperties() {
 	    Properties properties = new Properties();
@@ -32,17 +38,18 @@ public class DataConfig {
 	    properties.put("hibernate.cache.use_second_level_cache", "true");
 	    properties.put("hibernate.cache.region.factory_class", EhCacheRegionFactory.class);
 	    properties.put("net.sf.ehcache.configurationResourceName", "ehcache.xml");
+	    properties.put("hibernate.hbm2ddl.import_files_sql_extractor", "org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor");
 	    properties.put("hibernate.cache.use_query_cache", true);
 	    return properties;
 	}
 	
 	@Bean
 	public DataSource dataSource() {
-	    SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-	    dataSource.setDriverClass(Driver.class);
-	    dataSource.setUrl("jdbc:mysql://localhost:3306/airport?useSSL=false");
-	    dataSource.setUsername("judge73");
-	    dataSource.setPassword("wasd");
+	    HikariDataSource dataSource = new HikariDataSource();
+	    dataSource.setDriverClassName(environment.getProperty("spring.datasource.driverClassName"));
+	    dataSource.setJdbcUrl(environment.getProperty("spring.datasource.url"));
+	    dataSource.setUsername(environment.getProperty("spring.datasource.username"));
+	    dataSource.setPassword(environment.getProperty("spring.datasource.password"));
 	    return dataSource;
 	}
 	

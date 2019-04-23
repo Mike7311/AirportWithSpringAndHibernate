@@ -27,7 +27,6 @@ public class FlightController {
 
 	private final FlightService flightService;
 	
-	
 	public static final String REDIRECT = "redirect:/flight";
 	
 	public static final String ADD = "admin/addFlight";
