@@ -1,40 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="ERROR">
+<Configuration status="INFO">
   <Appenders>
     <Console name="Console" target="SYSTEM_OUT">
       <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
     </Console>
-    <File name="airport" fileName="logs/app.log">
+    <File name="MyFile" fileName="logs/app.log">
       <PatternLayout>
         <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
       </PatternLayout>
     </File>
-    <RollingFile name="roll-by-size"
-        fileName="target/log4j2/roll-by-size/app.log" filePattern="target/log4j2/roll-by-size/app.%i.log.gz"
-        ignoreExceptions="false">
-        <PatternLayout>
-            <Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern>
-        </PatternLayout>
-        <Policies>
-            <SizeBasedTriggeringPolicy
-                size="5 MB"/>
-        </Policies>
-	</RollingFile>
-    <Async name="Async">
-      <AppenderRef ref="airport"/>
-    </Async>
   </Appenders>
   <Loggers>
+  	<Logger name="org.springframework" level="info">
+  		<AppenderRef ref="Console" />
+  		<AppenderRef ref="MyFile" />
+  	</Logger>
   	<Logger name="org.hibernate" level="info" additivity="false">
       <AppenderRef ref="Console" />
     </Logger>
     <Logger name="org.hibernate.SQL" level="debug" additivity="false">
       <AppenderRef ref="Console" />
     </Logger>
-    <Root level="debug">
+    <Root level="info">
 	    <AppenderRef ref="Console"/>
-	    <AppenderRef ref="Async"/>
-	    <AppenderRef ref="roll-by-size"/>
+	    <AppenderRef ref="MyFile"/>
     </Root>
   </Loggers>
 </Configuration>

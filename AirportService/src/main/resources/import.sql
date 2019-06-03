@@ -1,5 +1,8 @@
+DROP TABLE IF EXISTS authorities;
 
-CREATE TABLE IF NOT EXISTS users (
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
 	id          INT			   NOT NULL AUTO_INCREMENT,
     username    VARCHAR(10)    NOT NULL,
     password    VARCHAR(32)    NOT NULL,
@@ -7,7 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS authorities (
+CREATE TABLE authorities (
 	user_id		INT			   NOT NULL,
     authority   VARCHAR(15)    NOT NULL,
     INDEX user_id (user_id),
